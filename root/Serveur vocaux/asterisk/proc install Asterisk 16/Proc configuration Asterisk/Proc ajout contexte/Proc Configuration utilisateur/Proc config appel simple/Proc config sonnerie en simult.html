@@ -1,0 +1,76 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>Proc config sonnerie en simultanée</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>Proc config sonnerie en simultanée</h1>
+
+      <div class="ck-content">
+        <div class="content">
+          <div class="ck-content">
+            <div>
+              <div>
+                <ul>
+                  <li><span class="text-big"><strong>Pour faire sonner a en simultané des numéros, on va configurer de la même manière que pour un appel simple, mais en modifiant la ligne:</strong></span>
+
+                    <ul>
+                      <li><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong>exten =&gt; _1XX, n, Dial(SIP/${EXTEN},10)</strong></span>
+
+                        <span
+                        class="text-big"><strong> -------→ </strong>
+
+                          </span><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong>exten =&gt; 1001, n, Dial(SIP/XXX&amp;SIP/XXX&amp;…,10)</strong></span>
+
+                          <ul>
+                            <li><span class="text-big" style="color:hsl(30, 75%, 60%)"><strong>1001:</strong></span>
+
+                              <span
+                              class="text-big"><strong> numéro utilisé pour appelé en simultané</strong>
+
+                                </span>
+                            </li>
+                            <li><span class="text-big"><strong>on remplace </strong></span><span class="text-big"
+                              style="color:hsl(30, 75%, 60%)"><strong>SIP/${EXTEN}</strong></span>
+
+                              <span
+                              class="text-big"><strong> par </strong>
+
+                                </span><span class="text-big" style="color:hsl(30, 75%, 60%)"><strong>SIP/XXX</strong></span>
+
+                                <span
+                                class="text-big"><strong> plus un symbole &amp; (=et)</strong>
+
+                                  </span>
+                            </li>
+                          </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li><span class="text-big"><strong>On obtient le résultat suivant:</strong></span>
+
+                  </li>
+                </ul>
+                <figure class="image">
+                  <img src="Proc%20config%20sonnerie%20en%20simultan%C3%A9e/image.png" />
+                </figure>
+                <ul>
+                  <li><span class="text-big"><strong>Et voila, sauvegardez et reloadez Asterisk, puis testez en appelant le numéro !!!</strong></span>
+
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

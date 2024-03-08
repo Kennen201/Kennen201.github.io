@@ -1,0 +1,159 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>IVR</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>IVR</h1>
+
+      <div class="ck-content">
+        <p class="MsoTitle" style="text-align:center;" align="center">ASTERISK Mise en place d’un IVR
+          <o:p></o:p>
+        </p>
+        <ol>
+          <li class="MsoListParagraph" style="margin-bottom:.0001pt;mso-add-space:auto;mso-list:l0 level1 lfo1;">Installation des pré requis
+            <o:p></o:p>
+          </li>
+        </ol>
+        <p class="MsoNormal" style="margin-bottom:.0001pt;">apt install perl
+          <o:p></o:p>
+        </p>
+        <p class="MsoNormal" style="margin-bottom:.0001pt;">apt install libwww-perl
+          <o:p></o:p>
+        </p>
+        <p class="MsoNormal" style="margin-bottom:.0001pt;">apt install sox
+          <o:p></o:p>
+        </p>
+        <p class="MsoNormal" style="margin-bottom:.0001pt;">apt install mpg123
+          <o:p></o:p>
+        </p>
+        <p class="MsoNormal" style="margin-bottom:.0001pt;">apt install flac
+          <o:p></o:p>
+        </p>
+        <p class="MsoNormal" style="margin-bottom:.0001pt;">&nbsp;</p>
+        <ol>
+          <li class="MsoListParagraph" style="margin-bottom:.0001pt;mso-add-space:auto;mso-list:l0 level1 lfo1;">On télécharge google.agi
+            <o:p></o:p>
+          </li>
+        </ol>
+        <p class="MsoNormal" style="margin-bottom:.0001pt;">cd /var/lib/asterisk/agi-bin
+          <o:p></o:p>
+        </p>
+        <p class="MsoNormal" style="margin-bottom:.0001pt;">wget https://raw.github.com/zaf/asterisk-googletts/master/googletts.agi
+          <o:p></o:p>
+        </p>
+        <p class="MsoNormal" style="margin-bottom:.0001pt;">chmod +x googletts.agi
+          <o:p></o:p>
+        </p>
+        <p class="MsoNormal" style="margin-bottom:.0001pt;">&nbsp;</p>
+        <ol>
+          <li class="MsoListParagraph" style="margin-bottom:.0001pt;mso-add-space:auto;mso-list:l0 level1 lfo1;">On vérifie que le module est bien installé
+            <o:p></o:p>
+          </li>
+        </ol>
+        <p class="MsoNormal" style="margin-bottom:.0001pt;">asterisk -rvv
+          <o:p></o:p>
+        </p>
+        <p class="MsoNormal" style="margin-bottom:.0001pt;">module show
+          <o:p></o:p>
+        </p>
+        <p class="MsoNormal" style="margin-bottom:.0001pt;">&nbsp;</p>
+        <p class="MsoNormal" style="margin-bottom:.0001pt;text-align:center;"
+        align="center"><span style="mso-fareast-language:FR;mso-no-proof:yes;"><img src="IVR_image.png" width="756" height="45" v:shapes="Image_x0020_1" uploadprocessed="true"></span>
+          <o:p></o:p>
+        </p>
+        <p class="MsoNormal" style="margin-bottom:.0001pt;text-align:center;"
+        align="center">&nbsp;</p>
+        <ol>
+          <li class="MsoListParagraph" style="margin-bottom:.0001pt;mso-add-space:auto;mso-list:l0 level1 lfo1;">On modifie le fichier SIP&nbsp;
+            <o:p></o:p>
+          </li>
+        </ol>
+        <p class="MsoNormal" style="margin-bottom:.0001pt;"><span style="font-family:Consolas;font-size:12.0pt;line-height:107%;mso-bidi-font-family:Consolas;">nano /etc/asterisk/sip.conf<o:p></o:p></span>
+        </p>
+        <p class="MsoNormal" style="margin-bottom:.0001pt;">&nbsp;</p>
+        <p class="MsoNormal" style="margin-bottom:.0001pt;"><span style="mso-fareast-language:FR;mso-no-proof:yes;"><img src="3_IVR_image.png" width="756" height="665" v:shapes="Image_x0020_2" uploadprocessed="true"></span>
+          <o:p></o:p>
+        </p>
+        <ol>
+          <li class="MsoListParagraph" style="margin-bottom:.0001pt;mso-add-space:auto;mso-list:l0 level1 lfo1;">On modifie le fichier extensions
+            <o:p></o:p>
+          </li>
+        </ol>
+        <p class="MsoNormal" style="margin-bottom:.0001pt;"><span style="mso-fareast-language:FR;mso-no-proof:yes;"><img src="1_IVR_image.png" width="756" height="546" v:shapes="Image_x0020_3" uploadprocessed="true"></span>
+          <o:p></o:p>
+        </p>
+        <p>exten =&gt;11,1,Answer()
+          <br>exten =&gt;11,2,Set(TIMEOUT(response)=10)
+          <br>exten =&gt;11,3,agi(googletts.agi,"Bienvenue dans la session distanciel
+          du jour",fr,any)
+          <br>exten =&gt;11,4,agi(googletts.agi,"Qui souhaitez vous joindre?",fr,any)
+          <br>exten =&gt;11,5,agi(googletts.agi,"Pour joindre Olivier, tapez 1",fr,any)
+          <br>exten =&gt;11,6,agi(googletts.agi,"Pour joindre Pascale, tapez 2",fr,any)
+          <br>exten =&gt;11,7,agi(googletts.agi,"Pour joindre Thomas, tapez 3",fr,any)
+          <br>exten =&gt;11,8,agi(googletts.agi,"Pour joindre Vincent, tapez 4",fr,any)
+          <br>exten =&gt;11,9,agi(googletts.agi,"Pour joindre Gabriel, tapez 5",fr,any)
+          <br>exten =&gt;11,10,agi(googletts.agi"Pour joindre Adrien, tapez 6",fr,any)
+          <br>exten =&gt;11,11,agi(googletts.agi"Pour joindre Quentin, tapez 7",fr,any)
+          <br>exten =&gt;11,12,agi(googletts.agi"Pour joindre Come, tapez 8",fr,any)</p>
+        <p>exten =&gt;1,1,Goto(IT,100,1)
+          <br>exten =&gt;2,1,Goto(IT,101,1)
+          <br>exten =&gt;3,1,Goto(DEV,200,1)
+          <br>exten =&gt;4,1,Goto(DEV,201,1)
+          <br>exten =&gt;5,1,Goto(COMPTA,300,1)
+          <br>exten =&gt;6,1,Goto(COMPTA,301,1)
+          <br>exten =&gt;7,1,Goto(SECRETARIAT,400,1)
+          <br>exten =&gt;8,1,Goto(SECRETARIAT,401,1)
+          <br>exten =&gt;_9#,1,Goto(IVR,11,3)
+          <br>exten =&gt;t,1,Goto(SECRETARIAT,400,3)</p>
+        <p class="MsoNormal" style="margin-bottom:.0001pt;">ici les GOTO des 4 dernières lignes renvoie vers les numéros taper sur
+          l'IVR, dans sip.conf, le 100 serait donc attribué à Pascale Taffet et le
+          101 serait attribué à Olivier Rouet, la ligne 3 renvoie au début du message
+          IVR si le numéro choisis n'est pas le bon</p>
+        <p class="MsoNormal" style="margin-bottom:.0001pt;">et la ligne 4 renvoie à la ligne 3 de la configuration de l'user 100 (ici
+          probablement sa messagerie vocale)</p>
+        <ol>
+          <li class="MsoListParagraph" style="margin-bottom:.0001pt;mso-add-space:auto;mso-list:l0 level1 lfo1;">On copie le fichier VoiceMail&nbsp;
+            <o:p></o:p>
+          </li>
+        </ol>
+        <p class="MsoNormal" style="margin:0cm -36.9pt .0001pt 0cm;"><span style="font-family:Consolas;font-size:12.0pt;line-height:107%;mso-bidi-font-family:Consolas;">cp /etc/asterisk/voicemail.conf /etc/asterisk/voicemail.conf.original<o:p></o:p></span>
+        </p>
+        <p class="MsoNormal" style="margin:0cm -36.9pt .0001pt 0cm;">&nbsp;</p>
+        <ol>
+          <li class="MsoListParagraph" style="margin:0cm -36.9pt .0001pt 36.0pt;mso-add-space:auto;mso-list:l0 level1 lfo1;"><span style="mso-spacerun:yes;">&nbsp;</span>On vide le fichier VoiceMail&nbsp;
+            <o:p></o:p>
+          </li>
+        </ol>
+        <p class="MsoNormal" style="margin:0cm -36.9pt .0001pt 0cm;"><span style="font-family:Consolas;font-size:12.0pt;line-height:107%;mso-bidi-font-family:Consolas;">&gt; /etc/asterisk/voicemail.conf</span>
+          <o:p></o:p>
+        </p>
+        <p class="MsoNormal" style="margin:0cm -36.9pt .0001pt 0cm;">&nbsp;</p>
+        <ol>
+          <li class="MsoListParagraph" style="margin:0cm -36.9pt .0001pt 36.0pt;mso-add-space:auto;mso-list:l0 level1 lfo1;">On modifie le fichier voicemail.conf
+            <o:p></o:p>
+          </li>
+        </ol>
+        <p class="MsoNormal" style="margin:0cm -36.9pt .0001pt 0cm;"><span style="font-family:Consolas;font-size:12.0pt;line-height:107%;mso-bidi-font-family:Consolas;">nano /etc/asterisk/voicemail.conf<o:p></o:p></span>
+        </p>
+        <p class="MsoNormal" style="margin:0cm -36.9pt .0001pt 0cm;">&nbsp;</p>
+        <p class="MsoNormal" style="margin:0cm -36.9pt .0001pt 0cm;"><span style="mso-fareast-language:FR;mso-no-proof:yes;"><img src="2_IVR_image.png" width="756" height="309" v:shapes="Image_x0020_4" uploadprocessed="true"></span>
+          <o:p></o:p>
+        </p>
+        <p class="MsoNormal" style="margin:0cm -36.9pt .0001pt 0cm;">&nbsp;</p>
+        <ol>
+          <li class="MsoListParagraph" style="margin:0cm -36.9pt .0001pt 36.0pt;mso-add-space:auto;mso-list:l0 level1 lfo1;">On ouvre la console Asterisk et on reload les paramètres&nbsp;
+            <o:p></o:p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </body>
+
+</html>

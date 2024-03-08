@@ -1,0 +1,78 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>Proc Configuration utilisateur</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>Proc Configuration utilisateur</h1>
+
+      <div class="ck-content">
+        <div class="content">
+          <div class="ck-content">
+            <ul>
+              <li><span class="text-big"><strong>la configuration des utilisateurs (et donc des numéros) se situe dans /etc/asterisk/sip.conf</strong></span>
+
+              </li>
+              <li><span class="text-big"><strong>cependant, il vaut mieux copier ce fichier et le cloner de façon a garder l'original si c'est la première modif</strong></span>
+
+              </li>
+              <li><span class="text-big"><strong>maintenant, faire </strong></span>
+
+                <span
+                class="text-big" style="color:hsl(180,75%,60%)"><strong>nano /etc/asterisk/sip.conf</strong> </span>
+                  <ul>
+                    <li><span class="text-big"><strong>pour créer un utilisateur, il suffit juste de rentrer ceci dans sip.conf et de remplacer avec les informations de l'utilisateur que vous voulez créer:</strong></span>
+
+                    </li>
+                  </ul>
+              </li>
+            </ul>
+            <figure class="image">
+              <img src="Proc%20Configuration%20utilisateur/image.png" />
+            </figure>
+            <ul>
+              <li><span class="text-big"><strong>Et voila !!! Maintenant sauvegardez et reloadez Asterisk.</strong></span>
+
+                <ul>
+                  <li><span class="text-big"><strong>Afin de pouvoir tester si les utilisateurs sont bien configurés, faites 2 utilisateurs.</strong></span>
+
+                  </li>
+                  <li><span class="text-big"><strong>voici le rajout en texte (pour pouvoir le copier coller a partir d'un cmd/terminal en ssh vers la vm)</strong></span>
+
+                  </li>
+                  <li><span class="text-big"><strong>Ne pas oublier de remplacer les champs concernés:</strong></span>
+
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <p><span style="color:hsl(180,75%,60%)"><strong>[XXX]                                           ;numéro</strong></span>  
+              <br
+              /><span style="color:hsl(180,75%,60%)"><strong>secret=XXXX                                     ;mot de passe</strong></span>  
+              <br
+              /><span style="color:hsl(180,75%,60%)"><strong>callerid= ‘NOM DE L’UTILISATEUR' &lt;XXX&gt;                        ;nom affiché</strong></span>  
+              <br
+              /><span style="color:hsl(180,75%,60%)"><strong>mailbox=XXX@"nom du contexte"                             ;boite mail</strong></span>  
+              <br
+              /><span style="color:hsl(180,75%,60%)"><strong>type=friend</strong></span>  
+              <br
+              /><span style="color:hsl(180,75%,60%)"><strong>host=dynamic</strong></span>  
+              <br
+              /><span style="color:hsl(180,75%,60%)"><strong>nat=no</strong></span>  
+              <br
+              /><span style="color:hsl(180,75%,60%)"><strong>context=local                                   ;contexte dans lequel est l'utilisateur</strong></span>
+
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

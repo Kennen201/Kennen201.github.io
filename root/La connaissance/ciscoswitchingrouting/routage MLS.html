@@ -1,0 +1,60 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>routage MLS</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>routage MLS</h1>
+
+      <div class="ck-content">
+        <p>sur un MLS (switch de niveau 3) connecté à plusieurs switchs, il faut
+          que les VLAN soient crées dans le switch (pas besoin de mettre de range),
+          &nbsp;et que les interfaces qui vont vers des switch soient en trunk, et
+          que les interfaces des switchs qui vont vers le MLS soient en trunk aussi</p>
+        <p>pour le MLS&nbsp;</p><pre><code class="language-text-plain">en
+conf t
+ip routing
+vlan 10
+name VLAN10
+exit
+vlan 20
+name VLAN20
+exit
+vlan 30
+name VLAN30
+exit
+interface g0/0
+switchport nonegotiate
+switchport mode trunk
+ip address 192.168.10.254 255.255.255.0
+exit
+interface g0/1
+switchport nonegotiate
+switchport mode trunk
+ip address 192.168.20.254 255.255.255.0
+exit
+interface g0/2
+switchport nonegotiate
+switchport mode trunk
+ip address 192.168.30.254 255.255.255.0
+exit
+interface g0/3
+switchport nonegotiate
+switchport mode trunk
+exit</code></pre>
+        <p>pour le switch :</p><pre><code class="language-text-plain">en
+conf t
+interface g0/1
+switchport nonegotiate
+switchport mode trunk</code></pre>
+      </div>
+    </div>
+  </body>
+
+</html>

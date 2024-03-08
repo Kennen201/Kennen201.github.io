@@ -1,0 +1,124 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>Proc IVR (TTS)</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>Proc IVR (TTS)</h1>
+
+      <div class="ck-content">
+        <div class="content">
+          <div class="ck-content">
+            <ul>
+              <li><span class="text-big"><strong>IVR = In Voice Response</strong></span>
+
+              </li>
+              <li><span class="text-big"><strong>On va d'abord ajouter les paquets requis pour faire de l'IVR et pour utiliser le module TTS (TextToSpeech):</strong></span>
+
+                <ul>
+                  <li><span class="text-big" style="color:hsl(180,75%,60%)"><strong>apt install perl libwww-perl sox mpg123 flac</strong></span>
+
+                  </li>
+                </ul>
+              </li>
+              <li><span class="text-big"><strong>Puis on va télécharger et installer le module TTS pour asterisk:</strong></span>
+
+                <ul>
+                  <li><span class="text-big" style="color:hsl(180,75%,60%)"><strong>wget -O GoogleTTS.tar.gz http://github.com/zaf/asterisk-googletts/tarball/master --no-check-certificate (s'assurer d'être dans un répertoire facile d'accès)</strong></span>
+
+                  </li>
+                  <li><span class="text-big" style="color:hsl(180,75%,60%)"><strong>tar –zxvf GoogleTTS.tar.gz</strong></span>
+
+                  </li>
+                  <li><span class="text-big" style="color:hsl(180,75%,60%)"><strong>cd zaf-asterisk-googletts-5566ddc </strong></span>
+
+                  </li>
+                  <li><span class="text-big" style="color:hsl(180,75%,60%)"><strong>cp googletts.agi /var/lib/asterisk/agi-bin/</strong></span>
+
+                  </li>
+                </ul>
+              </li>
+              <li><span class="text-big"><strong>Maintenant que le module est installé, on va configurer le fichier extensions.conf pour créer un numéro qui nous servira d'IVR:</strong></span>
+
+                <ul>
+                  <li><span class="text-big" style="color:hsl(180,75%,60%)"><strong>nano /etc/asterisk/extensions.conf</strong></span>
+
+                  </li>
+                  <li><span class="text-big"><strong>Marquer les lignes suivantes:</strong></span>
+
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <figure class="image">
+              <img src="Proc%20IVR%20(TTS)/image.png" />
+            </figure>
+            <ul>
+              <li><span class="text-big" style="color:hsl(30,75%,60%)"><strong>[ivr_1]:</strong></span>
+
+                <span
+                class="text-big"><strong> on créé un contexte ivr_1 dans lequel on met la séquence d'appel</strong>
+
+                  </span>
+              </li>
+              <li><span class="text-big" style="color:hsl(30,75%,60%)"><strong>900:</strong></span>
+
+                <span
+                class="text-big"><strong> notre numéro utilisé pour appeler l'IVR</strong>
+
+                  </span>
+              </li>
+              <li><span class="text-big" style="color:hsl(30, 75%, 60%)"><strong>agi():</strong></span>
+
+                <span
+                class="text-big"><strong> commande pour utiliser le TTS</strong>
+
+                  </span>
+              </li>
+              <li><span class="text-big" style="color:hsl(30, 75%, 60%)"><strong>googletts.agi:</strong></span>
+
+                <span
+                class="text-big"><strong> le module</strong>
+
+                  </span>
+              </li>
+              <li><span class="text-big"><strong>on indique le message qu'on veut que le TTS dise dans notre ligne utilisant agi().</strong></span>
+
+              </li>
+              <li><span class="text-big"><strong>on peut créer plusieurs lignes pour chaque message.</strong></span>
+
+              </li>
+              <li><span class="text-big" style="color:hsl(30, 75%, 60%)"><strong>WaitExten():</strong></span>
+
+                <span
+                class="text-big"><strong> on attend l'input de la personne qui appelle</strong>
+
+                  </span>
+              </li>
+              <li><span class="text-big" style="color:hsl(30, 75%, 60%)"><strong>goto():</strong></span>
+
+                <span
+                class="text-big"><strong> renvoi vers ce qu'on indique entre parenthèses (ici c'est le numéro 100 contenu dans le contexte local pour la ligne 9)</strong>
+
+                  </span>
+              </li>
+            </ul>
+            <p> </p>
+            <ul>
+              <li><span class="text-big"><strong>On sauvegarde, on reload asterisk et on teste en appelant l'IVR</strong></span>
+
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

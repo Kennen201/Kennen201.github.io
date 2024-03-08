@@ -1,0 +1,88 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>Notion de domaine, arbre, fôret</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>Notion de domaine, arbre, fôret</h1>
+
+      <div class="ck-content">
+        <div class="content">
+          <div class="ck-content">
+             <h3 style="margin-left:0px"><strong>I. Symbolisation d’un domaine</strong></h3>
+
+            <p style="margin-left:0px"> </p>
+            <p style="margin-left:0px">Lorsque vous verrez des schémas d’architecture Active Directory, vous
+              verrez les domaines représentés par des triangles. Ainsi, notre domaine
+              « <i>it-connect.local</i> » pourrait être schématisé ainsi :</p>
+            <figure class="image">
+              <img src="http://www.it-connect.fr/wp-content-itc/uploads/2015/06/cours-active-directory-5.png"
+              alt="cours-active-directory-5" />
+            </figure>
+            <p style="margin-left:0px"> </p>
+            <p style="margin-left:0px"><span style="background-color:rgb(255,255,255);color:rgb(68,68,68)">Au sein du domaine schématisé ci-dessous, on retrouvera </span><strong>tout un ensemble d’Unités d’Organisation remplies d’objets de différentes classes</strong>
+
+              <span
+              style="background-color:rgb(255,255,255);color:rgb(68,68,68)">: utilisateurs, ordinateurs, groupes, contrôleurs de domaine, etc.</span>
+            </p>
+            <p style="margin-left:0px"> </p>
+             <h2 style="margin-left:0px"><strong>II. La notion d’arbre</strong></h2>
+
+            <p style="margin-left:0px"> </p>
+            <p style="margin-left:0px"><strong>Un arbre est un regroupement hiérarchique de plusieurs domaines.</strong>
+
+            </p>
+            <p style="margin-left:0px">Par exemple, la schématisation des domaines utilisés précédemment représente
+              un arbre :</p>
+            <figure class="image">
+              <img src="http://www.it-connect.fr/wp-content-itc/uploads/2015/06/cours-active-directory-7.png"
+              alt="cours-active-directory-7" />
+            </figure>
+            <p><strong>Les domaines d’un même arbre partagent un espace de nom contigu et hiérarchique, comme c’est le cas avec l’exemple du domaine « </strong><i><strong>it-connect.local</strong></i><strong> ».</strong>
+
+            </p>
+             <h2 style="margin-left:0px"><strong>III. La notion de forêt</strong></h2>
+
+            <p style="margin-left:0px"> </p>
+            <p style="margin-left:40px"><span style="background-color:rgb(255,255,255);color:rgb(68,68,68)">En effet, une forêt est un regroupement d’une ou plusieurs arborescences de domaine, autrement dit d’un ou plusieurs arbres. Ces arborescences de domaine sont indépendantes et distinctes bien qu’elles soient dans la même forêt </span>
+
+            </p>
+            <p style="margin-left:40px">Voici l’arbre obtenu :</p>
+            <figure class="image">
+              <img src="http://www.it-connect.fr/wp-content-itc/uploads/2015/06/cours-active-directory-8.png"
+              alt="cours-active-directory-8" />
+            </figure>
+            <p style="margin-left:40px"><span style="background-color:rgb(255,255,255);color:rgb(68,68,68)">.La forêt est le rattachement de ses deux arbres au sein d'un même esapce :</span>
+
+            </p>
+            <p style="margin-left:0px">- Tous les arbres d’une forêt partagent un schéma d’annuaire commun</p>
+            <p
+            style="margin-left:0px">- Tous les domaines d’une forêt partagent un « <i>Catalogue Global</i> »
+              commun (nous verrons plus tard ce qu’est un catalogue global)</p>
+              <p style="margin-left:0px">- Les domaines d’une forêt fonctionnent de façon indépendante, mais la
+                forêt facilite les communications entre les domaines, c’est-à-dire dans
+                toute l’architecture.</p>
+              <p style="margin-left:0px">- Création de relations entre les différents domaines de la forêt</p>
+              <p
+              style="margin-left:0px">- Simplification de l’administration et flexibilité. Un utilisateur du
+                domaine « <i>paris.it-connect.local</i> » pourra accéder à des ressources
+                situées dans le domaine « <i>rennes.learn-online.local</i> » ou se connecter
+                sur une machine du domaine « <i>paris.learn-online.local</i> », si les autorisations
+                le permettent.</p>
+                <p>
+                  <br /> </p>
+                <p> </p>
+                <p> </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

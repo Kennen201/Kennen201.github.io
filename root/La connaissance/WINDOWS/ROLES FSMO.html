@@ -1,0 +1,118 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>ROLES FSMO</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>ROLES FSMO</h1>
+
+      <div class="ck-content">
+        <p>Signification&nbsp;: Flexible Single Master Operation</p>
+        <p>&nbsp;</p>
+        <p>Pourquoi&nbsp;? Lorsque l’on met en place un environnement Active Directory,
+          que l’on ait plusieurs contrôleurs de domaine. De ce fait, tous les contrôleurs
+          de domaine à l’annuaire.</p>
+        <p>Cependant, certaines tâches sont sensibles, il est dangereux d’autoriser
+          la modification de certaines données sur deux contrôleurs de domaine différents.
+          De ce fait et pour minimiser les risques de conflits, Microsoft a décidé
+          d’implémenter les rôles FSMO qui permettent de limiter la modification
+          de certaines données liées à l’annuaire Active Directory.</p>
+        <p>&nbsp;</p>
+        <h2>Les différents rôles&nbsp;:&nbsp;</h2>
+        <ul>
+          <li>Maître de schéma (SM)</li>
+          <li>Maître d’attribution de noms de domaines (DNM)</li>
+          <li>Maître d’infrastructure (IM)</li>
+          <li>Maître des ID relatifs (RID)</li>
+          <li>Emulateur du contrôleur principal de domaine (PDC)</li>
+        </ul>
+        <p>&nbsp;</p>
+        <h2>Où se situe-t-il&nbsp;:&nbsp;</h2>
+        <p>Les rôles situés à la racine de la forêt :</p>
+        <ul>
+          <li>Maître de schéma (SM)</li>
+          <li>Maître d’attribution de noms de domaines (DNM)</li>
+        </ul>
+        <p>Les rôles situés à la racine de chaque domaine :</p>
+        <ul>
+          <li>Maître d’infrastructure (IM)</li>
+          <li>Maître des ID relatifs (RID)</li>
+          <li>Emulateur du contrôleur principal de domaine (PDC)</li>
+        </ul>
+        <p>&nbsp;</p>
+        <p>Qu’est-ce qu’un schéma&nbsp;: La structure de l’annuaire Active Directory
+          <br>&nbsp;</p>
+        <p>Les rôles&nbsp;:</p>
+        <p><strong>Maître de schéma (SM)&nbsp;:</strong>
+        </p>
+        <p>Ou Appelé également Maître d’opération, il assure la réplication sur l’ensemble
+          des contrôleurs de domaines. Il ne peut y avoir qu’un seul SM par forêt
+          et les modifications ne peuvent se faire qu’avec le groupe «&nbsp;Administrateur
+          du domaine&nbsp;»</p>
+        <p>&nbsp;</p>
+        <p><strong>Maître d’attribution de noms de domaines (DNM)&nbsp;:</strong>
+        </p>
+        <p>Il permet les ajouts et suppressions de domaines dans la forêt, il est
+          également en charge de la création et/ou suppression de relations avec
+          les domaines externes. Il gère aussi les objets qui servent à établir le
+          lien entre les différentes partitions et le domaine. Mais il peut aussi
+          renommer les noms de domaine</p>
+        <p><span style="background-color:hsl(0,0%,0%);">Le rôle doit être placé avec le Maître de schéma et avec le PDC</span>
+        </p>
+        <p>&nbsp;</p>
+        <p><strong>Maître d’infrastructure (IM)&nbsp;:</strong>
+        </p>
+        <p>Rôle a pour objectif de gérer les références entre plusieurs objets. Il
+          met à jour des références d’objets à partir d’informations situées sur
+          les Global Cataloge d’autres Domain Controller de la forêt. Si un user
+          ce connecte au domaine A et qu’il est ajouté au groupe du domaine B, le
+          rôle à pour devoir de répliquer cette référence au domaine B.&nbsp;</p>
+        <p><span style="background-color:hsl(0,0%,0%);">Il ne peut y avoir qu’un seul Maître d’infrastructure par domaine</span>
+        </p>
+        <p>&nbsp;</p>
+        <p><strong>Maitre RID (RID Master)&nbsp;:</strong>
+        </p>
+        <p>Il est chargé d’attribuer à chaque objet Active Directory (utilisateur,
+          groupe, ordinateur, …) un identifiant unique de sécurité (SID).</p>
+        <p>Il est structuré de la façon suivante :</p>
+        <ul>
+          <li>Un identificateur de sécurité du domaine (domaine SID)</li>
+          <li>Un RID (Relative Identifier)</li>
+        </ul>
+        <p>Lorsque cette plage est épuisée, une demande est effectuée auprès du RID
+          afin de le renouveler</p>
+        <p><span style="background-color:aqua;">Il doit être placé de préférence avec le PDC</span>
+        </p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>
+          <br>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p><strong>Emulateur du contrôleur principal de domaine (PDC)&nbsp;:</strong>
+        </p>
+        <p>Il est chargé de répliquer chaque password.<span style="color:black;">&nbsp;</span>Il
+          agit aussi comme un serveur de temps, car il assure la synchronisation
+          des horloges clientes avec les différents contrôleurs de domaine.</p>
+        <ul>
+          <li><span style="background-color:hsl(0, 75%, 60%);">Important à savoir&nbsp;: Une différence de 5 minutes entre le DC et l’ordinateur ou serveur avec lequel nous nous connections ne se fera pas. Le service de temps est utilisé dans le cadre de l’authentification Kerberos qui nécessite un horodatage des paquets d’authentification.</span>
+          </li>
+        </ul>
+        <p>Une défaillance de ce rôle peut entrainer&nbsp;:&nbsp;</p>
+        <ul>
+          <li>Un arrêt de la réplication pour les domaines.</li>
+          <li>L’impossibilité de verrouiller les comptes utilisateurs.</li>
+          <li>Une éventuelle perte de synchronisation entre les DC.</li>
+          <li>Des problèmes d’authentification Kerberos.</li>
+          <li>Des problèmes pour changer/appliquer les GPO.</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+
+</html>

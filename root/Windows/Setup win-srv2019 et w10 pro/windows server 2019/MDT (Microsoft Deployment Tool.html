@@ -1,0 +1,232 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>MDT (Microsoft Deployment Toolkit)</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>MDT (Microsoft Deployment Toolkit)</h1>
+
+      <div class="ck-content">
+        <figure class="image">
+          <img style="aspect-ratio:217/550;" src="13_MDT (Microsoft Deployment Tool.jpg"
+          width="217" height="550">
+        </figure>
+        <p>d'abord installer adk setup, laisser le chemin de base pour l'installation
+          puis sélectionner ces options</p>
+        <p><a class="reference-link" href="MDT (Microsoft Deployment Tool.exe">adksetup(2).exe</a>
+        </p>
+        <figure class="image">
+          <img style="aspect-ratio:934/685;" src="4_MDT (Microsoft Deployment Tool.png"
+          width="934" height="685">
+        </figure>
+        <p>&nbsp;</p>
+        <p>ensuite installer adkwinsetup<a class="reference-link" href="1_MDT (Microsoft Deployment Tool.exe">adkwinpesetup.exe</a>&nbsp;,
+          laisser le chemin de base</p>
+        <figure class="image">
+          <img style="aspect-ratio:740/541;" src="https://cdn.discordapp.com/attachments/1158784261395058839/1194924043422400522/image.png?ex=65b21ebc&amp;is=659fa9bc&amp;hm=3c2f968f9197c7a3704dad681a089067ba27c0c5e230e22691615e9e9fc259e7&amp;"
+          width="740" height="541">
+        </figure>
+        <p>il n'y a qu'une seule option à choisir, on la laisse coché</p>
+        <figure
+        class="image">
+          <img style="aspect-ratio:511/209;" src="https://cdn.discordapp.com/attachments/1158784261395058839/1194924081787719700/image.png?ex=65b21ec5&amp;is=659fa9c5&amp;hm=c6e350cb3ebf15be5a44e412d592af2d65ea112de9f728e680109bb555ae67b5&amp;"
+          width="511" height="209">
+          </figure>
+          <p>ensuite installer le dernier<a class="reference-link" href="MDT (Microsoft Deployment Tool.bin">MicrosoftDeploymentToolkit_x64(1).msi</a>,
+            &nbsp;on laisse encore une fois le chemin de base</p>
+          <figure class="image">
+            <img style="aspect-ratio:762/594;" src="14_MDT (Microsoft Deployment Tool.jpg"
+            width="762" height="594">
+          </figure>
+          <p>il n'y a rien à sélectionner de plus ensuite, on laisse l'installation
+            se finir normalement</p>
+          <p>&nbsp;</p>
+          <p>lancer ce script dans powershell pour créer une utilisateur avec les droits
+            de lecture pour MDL</p>
+          <p>(mettre le script dans un notepad et changer l'extension en ps1, puis
+            clic-droit : éxecuter)</p>
+          <p>&nbsp;</p><pre><code class="language-text-plain"># Spécifier le nom et le mot de passe du compte de service
+$ServiceAccountName = "Service_MDT"
+$ServiceAccountPassword = ConvertTo-SecureString "P@ssword123!" -AsPlainText -Force
+
+# Créer le compte local
+New-LocalUser $ServiceAccountName -Password $ServiceAccountPassword -FullName "MDT" -Description "Compte de service pour MDT"
+
+# Ajouter les droits en lecture sur le partage
+Grant-SmbShareAccess -Name "DeploymentShare$" -AccountName "Service_MDT" -AccessRight Read -Force
+
+# Attribuer au compte de service les permissions nécessaires pour accéder aux fichiers de déploiement MDT
+$MDTSharePath = "\\$env:COMPUTERNAME\DeploymentShare$"
+$Acl = Get-Acl $MDTSharePath
+$Rule = New-Object System.Security.AccessControl.FileSystemAccessRule("Service_MDT","ReadAndExecute", "ContainerInherit, ObjectInherit", "None", "Allow")
+$Acl.SetAccessRule($Rule)
+Set-Acl $MDTSharePath $Acl</code></pre>
+          <p>ensuite on vient ajouter une image dans MDT</p>
+          <p>&nbsp;</p>
+          <figure class="image">
+            <img style="aspect-ratio:800/272;" src="MDT (Microsoft Deployment Tool.png"
+            width="800" height="272">
+          </figure>
+          <p>on choisit de copier un CD entier</p>
+          <figure class="image">
+            <img style="aspect-ratio:724/605;" src="1_MDT (Microsoft Deployment Tool.png"
+            width="724" height="605">
+          </figure>
+          <p>on choisit donc un lecteur ou l'on à ouvert l'iso</p>
+          <figure class="image image-style-block-align-left">
+            <img style="aspect-ratio:901/764;" src="MDT (Microsoft Deployment Tool.jpg"
+            width="901" height="764">
+          </figure>
+          <figure class="image image-style-block-align-left">
+            <img style="aspect-ratio:783/766;" src="1_MDT (Microsoft Deployment Tool.jpg"
+            width="783" height="766">
+          </figure>
+          <figure class="image image-style-block-align-left">
+            <img style="aspect-ratio:724/604;" src="2_MDT (Microsoft Deployment Tool.png"
+            width="724" height="604">
+          </figure>
+          <p>ensuite les fichiers se copient et c'est bon</p>
+          <p>on peut supprimer ceux dont on a pas besoin</p>
+          <figure class="image">
+            <img style="aspect-ratio:1638/883;" src="2_MDT (Microsoft Deployment Tool.jpg"
+            width="1638" height="883">
+          </figure>
+          <p>ensuite il va falloir ajouter l'image à une séquence de tâche pour qu'elle
+            se déploie, on va commencer par créer un dossier dans task sequences</p>
+          <figure
+          class="image">
+            <img style="aspect-ratio:361/169;" src="3_MDT (Microsoft Deployment Tool.jpg"
+            width="361" height="169">
+            </figure>
+            <p>ensuite on lance une nouvelle séquence</p>
+            <figure class="image">
+              <img style="aspect-ratio:439/191;" src="4_MDT (Microsoft Deployment Tool.jpg"
+              width="439" height="191">
+            </figure>
+            <p>on choisit un ID et un nom</p>
+            <figure class="image">
+              <img style="aspect-ratio:907/758;" src="5_MDT (Microsoft Deployment Tool.jpg"
+              width="907" height="758">
+            </figure>
+            <p>on laisse en standard</p>
+            <figure class="image image_resized" style="width:56.39%;">
+              <img style="aspect-ratio:910/758;" src="6_MDT (Microsoft Deployment Tool.jpg"
+              width="910" height="758">
+            </figure>
+            <p>on choisit l'os qu'on veut</p>
+            <figure class="image">
+              <img style="aspect-ratio:905/752;" src="7_MDT (Microsoft Deployment Tool.jpg"
+              width="905" height="752">
+            </figure>
+            <p>on ne remplit pas de clé sauf si on en à une&nbsp;</p>
+            <figure class="image">
+              <img style="aspect-ratio:901/768;" src="8_MDT (Microsoft Deployment Tool.jpg"
+              width="901" height="768">
+            </figure>
+            <figure class="image">
+              <img style="aspect-ratio:893/766;" src="9_MDT (Microsoft Deployment Tool.jpg"
+              width="893" height="766">
+            </figure>
+            <figure class="image">
+              <img style="aspect-ratio:902/762;" src="10_MDT (Microsoft Deployment Tool.jpg"
+              width="902" height="762">
+            </figure>
+            <p>ensuite on peut changer des règles de lancement via les propriétés de
+              deploymentshare</p>
+            <figure class="image">
+              <img style="aspect-ratio:1636/888;" src="11_MDT (Microsoft Deployment Tool.jpg"
+              width="1636" height="888">
+            </figure>
+            <p>sous “règles”</p>
+            <figure class="image">
+              <img style="aspect-ratio:896/748;" src="12_MDT (Microsoft Deployment Tool.jpg"
+              width="896" height="748">
+            </figure><pre><code class="language-text-plain">[Settings]
+Priority=Default
+Properties=MyCustomProperty
+
+[Default]
+OSInstall=Y
+SkipCapture=NO
+SkipAdminPassword=YES
+SkipProductKey=YES
+SkipComputerBackup=NO
+SkipBitLocker=NO
+
+_SMSTSORGNAME=IT-Connect
+
+TimeZone=105 
+TimeZoneName=Romance Standard Time</code></pre>
+            <p>La directive "<strong>_SMSTSORGNAME</strong>" permet de nommer l'organisation
+              au sein de l'environnement WinPE, ce qui n'influence pas directement la
+              machine déployée.</p>
+            <p>Par contre, les directives "<strong>TimeZone</strong>" et "<strong>TimeZoneName</strong>"
+              permettent de préciser le fuseau horaire de la machine, ce qui est intéressant.</p>
+            <p>&nbsp;</p>
+            <p>et ensuite pour éditer bootstrap.ini, il suffit de cliquer en bas à droite
+              de la fenêtre “rules”</p>
+            <p>&nbsp;</p>
+            <figure class="image">
+              <img style="aspect-ratio:1207/596;" src="3_MDT (Microsoft Deployment Tool.png"
+              width="1207" height="596">
+            </figure><pre><code class="language-text-plain">[Settings]
+Priority=Default
+
+[Default]
+DeployRoot=\\OUIDC\DeploymentShare$
+UserID=Service_MDT
+UserPassword=P@ssword123!
+UserDomain=tssr.local
+SkipBDDWelcome=YES
+KeyboardLocalePE=040c:0000040c</code></pre>
+            <p>on lance le client ensuite</p>
+            <figure class="image">
+              <img style="aspect-ratio:774/578;" src="5_MDT (Microsoft Deployment Tool.png"
+              width="774" height="578">
+            </figure>
+            <p>on choisit l'image qu'on veut déployer</p>
+            <figure class="image">
+              <img style="aspect-ratio:1021/769;" src="6_MDT (Microsoft Deployment Tool.png"
+              width="1021" height="769">
+            </figure>
+            <p>on change le nom du pc et on peut aussi l'intégrer au domaine ici (ça
+              s'automatise mais jsp atm)</p>
+            <figure class="image">
+              <img style="aspect-ratio:1021/769;" src="7_MDT (Microsoft Deployment Tool.png"
+              width="1021" height="769">
+            </figure>
+            <p>l'installation se poursuit</p>
+            <figure class="image">
+              <img style="aspect-ratio:800/593;" src="8_MDT (Microsoft Deployment Tool.png"
+              width="800" height="593">
+            </figure>
+            <p>ici on peut choisir de migrer des données, sur une machine vierge ce n'est
+              pas utile alors on peut laisser par défaut</p>
+            <figure class="image">
+              <img style="aspect-ratio:800/587;" src="9_MDT (Microsoft Deployment Tool.png"
+              width="800" height="587">
+            </figure>
+            <p>les paramètres ici sont telle qu'on les a mit dans les règles et le fichier
+              de lancement</p>
+            <figure class="image">
+              <img style="aspect-ratio:793/584;" src="10_MDT (Microsoft Deployment Tool.png"
+              width="793" height="584">
+            </figure>
+            <p>pas besoin de faire de capture ici</p>
+            <p>bitlocker peut être configuré ici</p>
+            <p>ensuite l'installation se fait (c long) et c'est gagné</p>
+            <figure class="image">
+              <img style="aspect-ratio:1022/770;" src="15_MDT (Microsoft Deployment Tool.jpg"
+              width="1022" height="770">
+            </figure>
+      </div>
+    </div>
+  </body>
+
+</html>

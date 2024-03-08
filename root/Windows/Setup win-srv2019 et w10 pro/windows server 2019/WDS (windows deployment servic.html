@@ -1,0 +1,183 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>WDS (windows deployment service)</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>WDS (windows deployment service)</h1>
+
+      <div class="ck-content">
+        <p>serveur classique w2019 avec un ADDS, un DHCP et un DNS : <strong>tous</strong> doivent
+          être configurées correctement comme cela</p>
+        <figure class="image">
+          <img style="aspect-ratio:1640/891;" src="18_WDS (windows deployment servic.png"
+          width="1640" height="891">
+        </figure>
+        <p>ensuite dans l'ajout de service, on va sélectinoner services de déploiement
+          windows</p>
+        <figure class="image image-style-block-align-left">
+          <img style="aspect-ratio:768/544;" src="WDS (windows deployment servic.png"
+          width="768" height="544">
+        </figure>
+        <p>on laisse tout par défaut même ces deux options ici</p>
+        <figure class="image image-style-block-align-left">
+          <img style="aspect-ratio:712/500;" src="1_WDS (windows deployment servic.png"
+          width="712" height="500">
+        </figure>
+        <p>on rentre dans service de déploiement soit par la barre windows, soit
+          directement dans le gestionnaire de serveur.</p>
+        <figure class="image">
+          <img style="aspect-ratio:1636/883;" src="2_WDS (windows deployment servic.png"
+          width="1636" height="883">
+        </figure>
+        <p>en suite l'assistant de configuration initial va s'ouvrir</p>
+        <figure class="image">
+          <img style="aspect-ratio:585/461;" src="3_WDS (windows deployment servic.png"
+          width="585" height="461">
+        </figure>
+        <p>cliquer sur suivant</p>
+        <figure class="image">
+          <img style="aspect-ratio:588/465;" src="4_WDS (windows deployment servic.png"
+          width="588" height="465">
+        </figure>
+        <p>ici on reste intégré à active directory</p>
+        <figure class="image">
+          <img style="aspect-ratio:586/463;" src="5_WDS (windows deployment servic.png"
+          width="586" height="463">
+        </figure>
+        <p>ici on choisit le répertoire, <span style="background-color:hsl(0,0%,100%);color:hsl(0,75%,60%);"><strong>NE PAS LAISSEZ UN DOSSIER SUR LE DISQUE D'INSTALLATION DU SERVEUR (il faut créer un nouveau disque/ en avoir un autre)</strong></span>
+        </p>
+        <figure class="image">
+          <img style="aspect-ratio:587/464;" src="6_WDS (windows deployment servic.png"
+          width="587" height="464">
+        </figure>
+        <p>ici on choisit répondre à tous les ordinateurs, sinon ils n'arriveront
+          pas à reçevoir une addresse IP au boot PXE et par conséquent n'arriveront
+          pas à recevoir l'image</p>
+        <figure class="image">
+          <img style="aspect-ratio:587/465;" src="7_WDS (windows deployment servic.png"
+          width="587" height="465">
+        </figure>
+        <p>l'installation est terminée, (si ici le serveur dit que la réponse à mis
+          trop de temps, on pourra réessayer de l'activer, ensuite au sein du gestionnaire)</p>
+        <p>&nbsp;</p>
+        <p><span class="text-big" style="background-color:hsl(0,0%,100%);color:hsl(0,75%,60%);"><strong>AJOUT D'UN BOOT.WIM ET D'UN INSTALL.WIM</strong></span>
+        </p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>au sein du gestionnaire on va se digirer dans image de démarrage</p>
+        <figure
+        class="image image-style-block-align-left image_resized" style="width:80.44%;">
+          <img style="aspect-ratio:1151/831;" src="WDS (windows deployment servic.jpg"
+          width="1151" height="831">
+          </figure>
+          <p>ici on va choisir un fichier boot.wim au sein d'une iso, pour se faire
+            : il faut monter un disque et rentre dans le dossier source qu'on va aller
+            copier</p>
+          <figure class="image">
+            <img style="aspect-ratio:1637/883;" src="8_WDS (windows deployment servic.png"
+            width="1637" height="883">
+          </figure>
+          <p>à l'intérieur de l'iso, on va soit aller dans le dossier source, soit
+            de manière plus rapide, faire une recherche pour les fichiers .wim</p>
+          <figure
+          class="image">
+            <img style="aspect-ratio:866/621;" src="9_WDS (windows deployment servic.png"
+            width="866" height="621">
+            </figure>
+            <p>ici on récupèrera boot et install, et on va aller les copier pour les
+              garder à un endroit ou on peut les garder</p>
+            <p>lorsqu'on à récupérer ces deux fichiers, on peut retourner dans le gestionnaire
+              de déploiement</p>
+            <figure class="image">
+              <img style="aspect-ratio:617/540;" src="1_WDS (windows deployment servic.jpg"
+              width="617" height="540">
+            </figure>
+            <p>on se trouvait dans l'ajout d'image de démarrage, donc ici ça sera le
+              fichier boot.wim dont on a besoin</p>
+            <p>pour les images d'installation c'est un poil différent : on va créer un
+              groupe d'image</p>
+            <figure class="image">
+              <img style="aspect-ratio:507/297;" src="10_WDS (windows deployment servic.png"
+              width="507" height="297">
+            </figure>
+            <p>on le nomme en fonction de ce qu'on va en faire</p>
+            <figure class="image">
+              <img style="aspect-ratio:353/168;" src="11_WDS (windows deployment servic.png"
+              width="353" height="168">
+            </figure>
+            <p>ensuite on va venir ajouter une image dans ce groupe</p>
+            <figure class="image image-style-block-align-left image_resized"
+            style="width:74.05%;">
+              <img style="aspect-ratio:1150/820;" src="2_WDS (windows deployment servic.jpg"
+              width="1150" height="820">
+            </figure>
+            <p>ici ça sera donc bien le fichier install.wim qui nous intéresse</p>
+            <figure
+            class="image image-style-block-align-left image_resized" style="width:42.18%;">
+              <img style="aspect-ratio:621/582;" src="3_WDS (windows deployment servic.jpg"
+              width="621" height="582">
+              </figure>
+              <p>ensuite on choisit la version dont on a besoin</p>
+              <figure class="image image-style-block-align-left image_resized"
+              style="width:46.08%;">
+                <img style="aspect-ratio:624/578;" src="4_WDS (windows deployment servic.jpg"
+                width="624" height="578">
+              </figure>
+              <p>un récapitulatif s'affiche et on peut valider l'image pour le déploiement</p>
+              <figure
+              class="image">
+                <img style="aspect-ratio:848/103;" src="5_WDS (windows deployment servic.jpg"
+                width="848" height="103">
+                </figure>
+                <p>on voit ici que l'image à bien été ajouté et prête pour le déploiement</p>
+                <p>on va venir vérifier que le déploiement fonctionne bien en lançant une
+                  machine virtuelle connecté au même réseau en NAT</p>
+                <figure class="image">
+                  <img style="aspect-ratio:1065/631;" src="12_WDS (windows deployment servic.png"
+                  width="1065" height="631">
+                </figure>
+                <p>le pc à bien pris en compte le domaine ainsi que le serveur, on peut donc
+                  procéder au boot via le network, soit en appuyant sur entrée ici, et si
+                  on le manque via EFI network sur la page du bios</p>
+                <figure class="image image-style-block-align-left">
+                  <img style="aspect-ratio:682/486;" src="13_WDS (windows deployment servic.png"
+                  width="682" height="486">
+                </figure>
+                <p>la machine va récupérer l'image depuis le serveur</p>
+                <figure class="image image-style-block-align-left image_resized"
+                style="width:78.16%;">
+                  <img style="aspect-ratio:1237/785;" src="14_WDS (windows deployment servic.png"
+                  width="1237" height="785">
+                </figure>
+                <p>on rentre bien dans l'installation windows</p>
+                <figure class="image image-style-block-align-left image_resized"
+                style="width:70.43%;">
+                  <img style="aspect-ratio:1020/762;" src="15_WDS (windows deployment servic.png"
+                  width="1020" height="762">
+                </figure>
+                <p>l'install va nous demanger les login admin</p>
+                <figure class="image image-style-block-align-left image_resized"
+                style="width:63.36%;">
+                  <img style="aspect-ratio:1027/767;" src="16_WDS (windows deployment servic.png"
+                  width="1027" height="767">
+                </figure>
+                <p>ici on voit l'image d'installation qu'on à choisit, si on en avait sélectionner
+                  aucune (pour faire des tests par exemple, il n'y aurait rien à sélectionner
+                  ici)</p>
+                <figure class="image image-style-block-align-left">
+                  <img style="aspect-ratio:1026/761;" src="17_WDS (windows deployment servic.png"
+                  width="1026" height="761">
+                </figure>
+                <p>on poursuit l'installation habituelle de windows 10 et gg c'est gagné</p>
+      </div>
+    </div>
+  </body>
+
+</html>

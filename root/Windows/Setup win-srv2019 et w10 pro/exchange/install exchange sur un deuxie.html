@@ -1,0 +1,124 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>install exchange sur un deuxieme serveur</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>install exchange sur un deuxieme serveur</h1>
+
+      <div class="ck-content">
+        <p>remettre dans le domaine et changer le nom du servr,&nbsp;</p>
+        <p><span class="text-huge" style="background-color:hsl(0,0%,100%);color:hsl(0,75%,60%);"><strong>SE CONNECTER EN TSSR\Administrateur PAS SUR LA SESSION LOCALE</strong></span>
+        </p>
+        <p>Etape 1&nbsp;: avec Sconfig disable les updates</p>
+        <p>
+          <img src="install exchange sur un deuxie.png" width="537" height="333">
+        </p>
+        <p>Etape 2&nbsp;: Installation des près requis&nbsp;:</p>
+        <p>Etape 2.1&nbsp;: Installation netframework 4.8 puis redémarrer</p>
+        <p>
+          <img src="1_install exchange sur un deuxie.png" width="379" height="357">
+        </p>
+        <p>Etape 2.2&nbsp;: Installer vcredistx64</p>
+        <p>
+          <img src="2_install exchange sur un deuxie.png" width="388" height="237">
+        </p>
+        <p>
+          <br>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>Etape 2.3&nbsp;: Installer ucmaruntimesetup, puis redémarrer.&nbsp;</p>
+        <p>
+          <img src="3_install exchange sur un deuxie.png" width="361" height="343">
+        </p>
+        <p>installer rewrite</p>
+        <p>Etape 2.4&nbsp;: ouvrir PowerShell en administrateur et taper la commande&nbsp;:&nbsp;</p>
+        <p>Install-WindowsFeature NET-Framework-45-Features, RPC-over-HTTP-proxy,
+          RSAT-Clustering, RSAT-Clustering-CmdInterface, RSAT-Clustering-Mgmt, RSAT-Clustering-PowerShell,
+          Web-Mgmt-Console, WAS-Process-Model, Web-Asp-Net45, Web-Basic-Auth, Web-Client-Auth,
+          Web-Digest-Auth, Web-Dir-Browsing, Web-Dyn-Compression, Web-Http-Errors,
+          Web-Http-Logging, Web-Http-Redirect, Web-Http-Tracing, Web-ISAPI-Ext, Web-ISAPI-Filter,
+          Web-Lgcy-Mgmt-Console, Web-Metabase, Web-Mgmt-Console, Web-Mgmt-Service,
+          Web-Net-Ext45, Web-Request-Monitor, Web-Server, Web-Stat-Compression, Web-Static-Content,
+          Web-Windows-Auth, Web-WMI, Windows-Identity-Foundation, RSAT-ADDS</p>
+        <p>
+          <img src="4_install exchange sur un deuxie.png" width="756" height="245">
+        </p>
+        <p>
+          <br>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>Etape 3&nbsp;: Installation Exchange 2016</p>
+        <p>Etape 3.1&nbsp;: Monter l’ISO dans le lecteur de disque.&nbsp;</p>
+        <p>
+          <img src="5_install exchange sur un deuxie.png" width="545" height="146">
+        </p>
+        <p>Etape 3.2&nbsp;: Lancer «&nbsp;Setup.exe&nbsp;»</p>
+        <p>
+          <img src="install exchange sur un deuxie.jpg" width="386" height="302">
+        </p>
+        <p>Etape 3.3&nbsp;: «&nbsp;Ne pas vérifier les mises à jour maintenant&nbsp;»</p>
+        <p>
+          <img src="1_install exchange sur un deuxie.jpg" width="394" height="348">
+        </p>
+        <p>
+          <br>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>Etape 3.4&nbsp;: Préparation des fichiers&nbsp;</p>
+        <p>
+          <img src="6_install exchange sur un deuxie.png" width="343" height="300">
+          <img src="7_install exchange sur un deuxie.png" width="352" height="306">
+        </p>
+        <p>Etape 3.5&nbsp;: Début du programme l’installation, faite «&nbsp;suivant&nbsp;»</p>
+        <p>
+          <img src="8_install exchange sur un deuxie.png" width="396" height="348">
+        </p>
+        <p>Etape 3.6&nbsp;: accepter les termes du contrat</p>
+        <p>
+          <img src="9_install exchange sur un deuxie.png" width="389" height="340">
+        </p>
+        <p>Etape 3.6&nbsp;:&nbsp;«&nbsp;ne pas utiliser les paramètres recommandés&nbsp;»</p>
+        <p>
+          <img src="11_install exchange sur un deuxie.png" width="405" height="354">
+        </p>
+        <p>Etape 3.7&nbsp;: sélectionner les rôles «&nbsp;Rôle de boîte au lettre&nbsp;»
+          &amp; «&nbsp;Installer automatiquement les rôles et les fonctionnalité
+          Windows Server requis pour Exchanger Server&nbsp;»</p>
+        <p>
+          <img src="10_install exchange sur un deuxie.png" width="413" height="361">
+        </p>
+        <p>
+          <br>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>Etape 3.8&nbsp;: laisser le chemin par défaut</p>
+        <p>
+          <img src="12_install exchange sur un deuxie.png" width="429" height="375">&nbsp;</p>
+        <p>Etape 3.9&nbsp;: Donner un nom à votre organisation&nbsp;</p>
+        <p>
+          <img src="13_install exchange sur un deuxie.png" width="433" height="380">
+        </p>
+        <p>
+          <br>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>Etape 3.10&nbsp;: ne pas activer le paramètre de protection anti programme
+          &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; malveillant</p>
+        <p>
+          <img src="14_install exchange sur un deuxie.png" width="405" height="356">
+        </p>
+        <p>Etape 3.11&nbsp;: Si pas de message d’erreur, vous pouvez installer Exchange</p>
+        <p>
+          <img src="15_install exchange sur un deuxie.png" width="361" height="314">
+          <img src="16_install exchange sur un deuxie.png" width="373" height="329">
+        </p>
+        <p>Etape 3.12&nbsp;: une fois l’installation fini&nbsp;:&nbsp;</p>
+        <p>https://@IP-EXCHANGE/ecp pour accéder à l’interface de gestion exchange.</p>
+        <p>https://@IP-EXCHANGE/owa pour accéder à l’interface utilisateur.</p>
+      </div>
+    </div>
+  </body>
+
+</html>

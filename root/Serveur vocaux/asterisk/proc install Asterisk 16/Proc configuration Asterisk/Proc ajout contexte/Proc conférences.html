@@ -1,0 +1,133 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>Proc conférences</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>Proc conférences</h1>
+
+      <div class="ck-content">
+        <div class="content">
+          <div class="ck-content">
+            <ul>
+              <li><span class="text-big"><strong>On va créer trois utilisateurs et deux salles pour lancer des conférences.</strong></span>
+
+                <ul>
+                  <li><span class="text-big"><strong>Pour ça on va dupliquer confbridge.conf dans confbridge.conf.original:</strong></span>
+
+                    <ul>
+                      <li><span class="text-big" style="color:hsl(180,75%,60%)"><strong>cp /etc/asterisk/confbridge.conf /etc/asterisk/confbridge.conf.original</strong></span>
+
+                      </li>
+                    </ul>
+                  </li>
+                  <li><span class="text-big"><strong>On vide confbridge.conf:</strong></span>
+
+                    <ul>
+                      <li><span class="text-big" style="color:hsl(180,75%,60%)"><strong>&gt; /etc/asterisk/confbridge.conf</strong></span>
+
+                      </li>
+                    </ul>
+                  </li>
+                  <li><span class="text-big"><strong>On va dans confbridge.conf</strong></span>
+
+                    <ul>
+                      <li><span class="text-big" style="color:hsl(180,75%,60%)"><strong>nano /etc/asterisk/confbridge.conf</strong></span>
+
+                      </li>
+                    </ul>
+                  </li>
+                  <li><span class="text-big"><strong>On rajoute les lignes suivantes:</strong></span>
+
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <figure class="image">
+              <img src="Proc%20conf%C3%A9rences/image.png" />
+            </figure>
+            <ul>
+              <li><span class="text-big"><strong>On a donc créé un utilisateur non authentifié (</strong></span>
+
+                <span
+                class="text-big" style="color:hsl(30, 75%, 60%)"><strong>User_NoAuth</strong>
+
+                  </span><span class="text-big"><strong>), un utilisateur authentifié (</strong></span>
+
+                  <span
+                  class="text-big" style="color:hsl(30, 75%, 60%)"><strong>User_Auth</strong>
+
+                    </span><span class="text-big"><strong>), un utilisateur admin (</strong></span>
+
+                    <span
+                    class="text-big" style="color:hsl(30, 75%, 60%)"><strong>User_Admin</strong>
+
+                      </span><span class="text-big"><strong>) et deux salles (</strong></span>
+
+                      <span
+                      class="text-big" style="color:hsl(30, 75%, 60%)"><strong>ConfRoom_1</strong>
+
+                        </span><span class="text-big"><strong> et </strong></span><span class="text-big"
+                        style="color:hsl(30, 75%, 60%)"><strong>ConfRoom_2</strong></span>
+
+                        <span
+                        class="text-big"><strong>) pour les conférences.</strong>
+
+                          </span>
+              </li>
+              <li><span class="text-big"><strong>on sauvegarde et on ferme le fichier.</strong></span>
+
+              </li>
+              <li><span class="text-big"><strong>Maintenant, on va dans extensions.conf:</strong></span>
+
+                <ul>
+                  <li><span class="text-big" style="color:hsl(180,75%,60%)"><strong>nano /etc/asterisk/extensions.conf</strong></span>
+
+                  </li>
+                </ul>
+              </li>
+              <li><span class="text-big"><strong>on rentre les lignes suivantes:</strong></span>
+
+              </li>
+            </ul>
+            <figure class="image">
+              <img src="Proc%20conf%C3%A9rences/1_image.png" />
+            </figure>
+            <ul>
+              <li><span class="text-big" style="color:hsl(30,75%,60%)"><strong>1002/1003:</strong></span>
+
+                <span
+                class="text-big"><strong> les numéros assignés la première salle (ConfRoom_1):</strong>
+
+                  </span>
+                  <ul>
+                    <li><span class="text-big"><strong>1002 sera le numéro pour rejoindre la salle en tant qu'utilisateur authentifié</strong></span>
+
+                      <ul>
+                        <li><span class="text-big"><strong>1003 sera le numéro pour rejoindre la salle en tant qu'admin</strong></span>
+
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+              </li>
+              <li><span class="text-big"><strong>1004/1005: même chose mais pour la deuxieme salle (ConfRoom_2)</strong></span>
+
+              </li>
+              <li><span class="text-big"><strong>On sauvegarde, on reload Asterisk et on teste.</strong></span>
+
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

@@ -1,0 +1,399 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>A SAVOIR OSI</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>A SAVOIR OSI</h1>
+
+      <div class="ck-content">
+        <p><span style="background-color:hsl(0,75%,60%);">couche physique</span> :
+          être capable de transporter un signal en bit sur les supports (représenter
+          les bits sur le support)</p>
+        <p>travail sur la représentation des bits</p>
+        <p><span style="background-color:hsl(240,75%,60%);">support physique : filaire et non filaire</span>
+        </p>
+        <p><span style="background-color:hsl(270,75%,60%);">filaire : fibre et cuivre</span>
+        </p>
+        <p>fibre = monomode / multimode</p>
+        <p>insensible aux perturbations électromagnétiques, ça ne conduit pas l'électricité</p>
+        <p>plus loin et plus vite et plus cher = monomode</p>
+        <p>rayon plus gros, plus facile à fabriquer donc moins loin et moins vite
+          = multi mode</p>
+        <p>SFP+ en fonction du connecteur de fibre car les PUTAINS de connectiques
+          ne sont pas les mêmes</p>
+        <p><span style="background-color:hsl(270,75%,60%);">cuivre = coaxial (bnc et N) / à paire torsadées</span>
+        </p>
+        <p>paire torsadées = 8 fils en pairs, permet de créer un phénomène d'anulation,
+          pour éviter les perturbations (diaphonie)</p>
+        <p><span style="background-color:hsl(240,75%,60%);">topologie</span> : bus,
+          étoile, étoile étendue (historiquement le ring)</p>
+        <p>cable à paire torsadées en plusieurs catégories : STP/UTP/FTP (shielded,unshielded,foil)
+          XX/XTP (U/FTP? SF/FTP/ , S/UTP en mode c la protection du cable et protection
+          des pairs, les pairs ne peuvent être que foil ou unshielded</p>
+        <p>code : quel forme de signal pour les bits sur le support</p>
+        <p>PAS d'info par encapsulation</p>
+        <p>Equipements : répéteurs et hub (qui ne connaissent pas la signafication
+          des bits qu'ils retransmettrent en les remettant en forme</p>
+        <p><span style="background-color:hsl(0,75%,60%);">couche liaison de données</span>
+        </p>
+        <p>être capable de faire discuter des équipements adjacents qui accèdent
+          aux médias de la même façon</p>
+        <p>responsable de la politique d'accès aux médias = (Media access control)</p>
+        <p>but est de transmettre des trames (frame) entre machine proches qui possèdent
+          la même politique d'accès aux médias</p>
+        <p>trame = en tête = adresse mac de destination et suivi de l'adresse source</p>
+        <p>en queue = somme de contrôle &nbsp;</p>
+        <p>du haut vers le bas
+          <br>&nbsp;</p>
+        <p>on ne peut travailler que avec des équipements qui ont la même politique
+          d'accès au média</p>
+        <p>&nbsp;</p>
+        <p>une adresse mac : 6 octets/48 bits( 3 + 3 octests)</p>
+        <p>3 premiers octets = OUI aka la marque (régis par l'IEEE) (organization
+          unit identifier)</p>
+        <p>3 derniers octets = identifiant de la carte</p>
+        <p>types adresse mac (unicast/monodiffusion = une personne, broadcast FF-FF-FF-FF-FF-FF,</p>
+        <p>multicast = si le premier octet est impair, c'est une adresse de multicast</p>
+        <p>équipements : pont(si en bus) et commutateur, il connait le media access
+          control de niveau 2 et de savoir si la trame est correcte pour la retranscrire.</p>
+        <p><span style="background-color:hsl(0,75%,60%);">couche réseau</span>
+        </p>
+        <p>équipement routeurs</p>
+        <p>aller de bout en bout du réseau grâce à des paquets qui vont permettrent
+          de passer d'un réseau à un autre</p>
+        <p>tout les adresses de niveau 3 ont une partie qui permet de déterminer
+          le réseau ou l'on est</p>
+        <p><span style="background-color:hsl(0,75%,60%);">couche transport</span>
+        </p>
+        <p>couche qui vérifie que tout à bien été transporté de la machine source
+          à la machine destinataire</p>
+        <p>deux protocoles TCP/UDP</p>
+        <p>UDP = plus rapide mais moins fiable</p>
+        <p>TCP = moins rapide mais plus fiable</p>
+        <p>équipements : passerelle</p>
+        <p><span style="background-color:hsl(240,75%,60%);">PDU = SEGMENTS</span>
+        </p>
+        <p>information rajoutées par l'encapsulation segments (datagrammes) numéros
+          de ports source et destination et l'identifiant du protocole véhiculé par
+          le paquet de l'ip (information de controle du flux)</p>
+        <p>&nbsp;</p>
+        <p><span style="background-color:hsl(0,75%,60%);">couche session</span>
+        </p>
+        <p>si tout est bon on ouvre une session</p>
+        <p>PDU=données</p>
+        <p>équipements : passerelle</p>
+        <p><span style="background-color:hsl(0,75%,60%);">couche présentation</span>
+        </p>
+        <p>présenter les informations/données dans le format comme l'attend machine
+          de destination</p>
+        <p>PDU=données</p>
+        <p>équipements : passerelle</p>
+        <p><span style="background-color:hsl(0,75%,60%);">couche application</span>
+        </p>
+        <p>c'est une application mdr voila bref</p>
+        <p>PDU=données</p>
+        <p>(on dit que les pdu sont données car le modèle TCP/IP reprends ces trois
+          couches en une)</p>
+        <p>équipements : passerelle</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p><span class="text-big" style="background-color:hsl(0,0%,100%);color:hsl(0,75%,60%);"><code>COMMUTATION TABLE DE COMMUTATION</code></span>
+        </p>
+        <p><span style="background-color:hsl(270,75%,60%);">Quels éléments retrouve-t-on dans une table de commutation&nbsp;?</span>
+        </p>
+        <p>les adresses mac associées aux ports/interfaces du commutateur</p>
+        <p><span style="background-color:hsl(270,75%,60%);">A partir de quel champ de la PDU entrante est-elle bâtie&nbsp;?&nbsp;</span>
+        </p>
+        <p>elle est bâtie à partir de l'adresse mac source de la pdu entrante</p>
+        <p><span style="background-color:hsl(270,75%,60%);">Comment un commutateur décide-t-il sur quel(s) port(s) il doit transférer une PDU&nbsp;entrante ?</span>
+        </p>
+        <p>le commutatueur examine la table de commutaion pour trouver l'adresse
+          mac source. si l'adresse est présente, e commutateur transfère la pdu vers
+          le port associé à cette aresse. si l'adresse n'est pas présente le commutaeur
+          apprend et enregistre l'adresse mac associé au port d'où provient la pdu
+          puis transfère la pdu vers ce port</p>
+        <p>&nbsp;</p>
+        <p><span class="text-big" style="background-color:hsl(0,0%,100%);color:hsl(0,75%,60%);"><code>TABLE ARP</code></span>
+        </p>
+        <p>&nbsp;</p>
+        <p><span style="background-color:hsl(270,75%,60%);">a quoi ça sert</span>
+        </p>
+        <p>elle permet de résoudre des adresses ip en adresses mac</p>
+        <p><span style="background-color:hsl(270,75%,60%);">on trouve quoi dedans&nbsp;</span>
+        </p>
+        <p>table d'adresse ip et adresse mac</p>
+        <p><span style="background-color:hsl(270,75%,60%);">comment elle se bâtie&nbsp;</span>
+        </p>
+        <p>le switch récupère les adresses mac et ip des machines et lors des demandes
+          il y a une requête arp entre le switch et la machine pour savoir par où
+          doit aller le paquet</p>
+        <p>&nbsp;</p>
+        <p><span class="text-big" style="background-color:hsl(0,0%,100%);color:hsl(0,75%,60%);"><code>table de commutation</code></span>
+        </p>
+        <p>&nbsp;</p>
+        <p><span style="background-color:hsl(270,75%,60%);">Quels éléments retrouve-t-on dans une table de commutation&nbsp;?</span>
+        </p>
+        <p>on retrouve adresse mac et port/interface(g0/1 par exemple)</p>
+        <p><span style="background-color:hsl(270,75%,60%);">A partir de quel champ de la PDU entrante est-elle bâtie&nbsp;?</span>&nbsp;</p>
+        <p>en regardant les trames entrante et consultant les adresses mac source
+          et associe les adresse mac aux ports par lequel la trame est rentrée</p>
+        <p><span style="background-color:hsl(270,75%,60%);">Comment un commutateur décide-t-il sur quel(s) port(s) il doit transférer une PDU&nbsp;entrante ?</span>
+        </p>
+        <p>sur une trame unicast : il regarde dans sa table pour voir sur quel interface
+          il doit envoyaer la trame</p>
+        <p>sur une trame broadcast : le switch transmet la trame sur tout les ports
+          sauf par lequel il est entré</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p><span style="background-color:hsl(240,75%,60%);">Quel(s) équipement(s) délimite(nt) les réseaux de niveau 2&nbsp;?&nbsp;</span>
+        </p>
+        <p>les équipements qui délimitent le niveau 2 sont tout ceux qui sont au
+          dessus du niveau 2</p>
+        <p><span style="background-color:hsl(240,75%,60%);">équipement qui arrête la diffusion</span>
+        </p>
+        <p>routeur</p>
+        <p><span class="text-big" style="background-color:hsl(0,0%,100%);color:hsl(0,75%,60%);"><code>ADRESSES NIVEAU IPV4</code></span>
+        </p>
+        <p><span style="background-color:hsl(240,75%,60%);">nom usuel de niveau 3</span>
+        </p>
+        <p>adresse logique/adresse réseau</p>
+        <p><span style="background-color:hsl(240,75%,60%);">nombre de bits&nbsp;</span>
+        </p>
+        <p>32 bits</p>
+        <p><span style="background-color:hsl(240,75%,60%);">nombre d'oct</span>et4</p>
+        <p>4</p>
+        <p><span style="background-color:hsl(240,75%,60%);">Représentées en binaire, octal, décimal ou hexadécimal&nbsp;? Quel est le séparateur&nbsp;?</span>
+        </p>
+        <p>décimale, séparateur en point</p>
+        <p>&nbsp;</p>
+        <p><span style="background-color:hsl(0,75%,60%);">LES 3 CLASSES</span>
+        </p>
+        <p><span style="background-color:hsl(240,75%,60%);">CLASSE A</span>
+        </p>
+        <p>Valeurs du 1<sup>er</sup> octet = 0 à 127</p>
+        <p>Masque par défaut = 255.0.0.0&nbsp;</p>
+        <p>Préfixe par défaut = /8</p>
+        <p>Nombre d’octet(s) de réseau = 1</p>
+        <p>Nombre d’octet(s) d ‘hôte = 3</p>
+        <p>Adresses réservées =</p>
+        <p>Adresses privées = 10.0.0.0 à 10.255.255.255</p>
+        <p>utilité de 127.0.0.1, elle permet de regarder si la suite de logiciel
+          TCP/IP est installé sur l'ordinateur.</p>
+        <p><span style="background-color:hsl(240,75%,60%);">CLASSE B</span>
+        </p>
+        <p>&nbsp;</p>
+        <p>Valeurs du 1er octet = 128 à 191</p>
+        <p>Masque par défaut = 255.255.0.0</p>
+        <p>Préfixe par défaut = /16</p>
+        <p>Nombre d’octet(s) de réseau = 2</p>
+        <p>&nbsp;Nombre d’octet(s) d‘hôte = 2</p>
+        <p>Adresses privées = 172.16.0.0 à 172.31.255.255</p>
+        <p>Adresses de lien local/APIPA</p>
+        <p>&nbsp;</p>
+        <p><span style="background-color:hsl(240,75%,60%);">CLASSE C</span>
+          <br>Valeurs du 1<sup>er</sup> octet = 192 à 223</p>
+        <p>Masque par défaut = 255.255.255.0</p>
+        <p>Préfixe par défaut = /24</p>
+        <p>Nombre d’octet(s) de réseau = 3</p>
+        <p>Nombre d’octet(s) d’hôte = 1</p>
+        <p>Adresses privées = 192.168.0.0 à 192.168.255.255</p>
+        <p><span style="background-color:hsl(240,75%,60%);">CLASSE D synonyme avec multicast</span>
+        </p>
+        <p>Valeur du 1<sup>er</sup> octet = 224 à 239&nbsp;</p>
+        <p>Cette classe est réservée à quel usage&nbsp;? MUTLICAST de protocole RIP
+          (représente un certain nombre d'équipement qui ont certaines caractéristiques)</p>
+        <p>&nbsp;</p>
+        <p>brodcast dirigé = adress réseau + que des bits à 1 sur la partie hôte</p>
+        <p>broadcast limité = 255.255.255.255 = va uniquement envoyer des paquets
+          sur les équipements sur le réseau&nbsp;</p>
+        <p>&nbsp;</p>
+        <p><span style="background-color:hsl(0,0%,100%);color:hsl(0,75%,60%);"><code><strong>PORTS</strong></code></span>
+        </p>
+        <p>0 a 1024 well known ports</p>
+        <p>1024 a 49151 applications normalisées par leur port</p>
+        <p>49152 = 65536 port dynamique, éphémère</p>
+        <p><span class="text-big" style="background-color:hsl(0,0%,100%);color:hsl(0,75%,60%);"><code><strong>EXERCICES DE CALCULS D'IP</strong></code></span>
+        </p>
+        <p>&nbsp;</p>
+        <p>
+          <br>2)&nbsp;&nbsp;&nbsp;&nbsp;Adresse IP 203.0.113.98 255.255.255.224
+          <br>a.&nbsp;&nbsp;&nbsp;&nbsp;Quel est le nombre de bit(s) de réseau sur le
+          quatrième octet ?
+          <br>b.&nbsp;&nbsp;&nbsp;&nbsp;Quel est le préfixe CIDR ?
+          <br>27
+          <br>c.&nbsp;&nbsp;&nbsp;&nbsp;Sur quel réseau est situé votre équipement ?</p>
+        <p>203.0.113.96
+          <br>d.&nbsp;&nbsp;&nbsp;&nbsp;Quel est l’adresse de diffusion (dirigée) de
+          ce réseau ?</p>
+        <p>203.0.113.127
+          <br>e.&nbsp;&nbsp;&nbsp;&nbsp;Quel sont les 1ers et derniers hôtes de ce réseau
+          ?</p>
+        <p>&nbsp;97 et 126
+          <br>f.&nbsp;&nbsp;&nbsp;&nbsp;Quelle est la prochaine adresse disponible hors
+          de ce réseau ?
+          <br>g.&nbsp;&nbsp;&nbsp;&nbsp;Quelle est la valeur décimale du bit de poids
+          faible de la partie réseau ?
+          <br>h.&nbsp;&nbsp;&nbsp;&nbsp;Quel est le nombre d’adresses disponibles sur
+          votre réseau ?
+          <br>i.&nbsp;&nbsp;&nbsp;&nbsp;Quel est le nombre que vous devez rajouter à
+          cet identifiant de réseau pour obtenir la prochaine adresse disponible
+          hors de ce réseau ?
+          <br>3)&nbsp;&nbsp;&nbsp;&nbsp;Adresse IP 192.0.2.50 /28
+          <br>a.&nbsp;&nbsp;&nbsp;&nbsp;Quel est le nombre de bit(s) de réseau sur le
+          quatrième octet ?&nbsp;</p>
+        <p>4
+          <br>b.&nbsp;&nbsp;&nbsp;&nbsp;Quel est le masque ?</p>
+        <p>&nbsp;255.255.255.240
+          <br>c.&nbsp;&nbsp;&nbsp;&nbsp;Sur quel réseau est situé votre équipement ?</p>
+        <p>192.0.2.48
+          <br>d.&nbsp;&nbsp;&nbsp;&nbsp;Quel est l’adresse de diffusion (dirigée) de
+          ce réseau ?</p>
+        <p>192.0.2.63
+          <br>e.&nbsp;&nbsp;&nbsp;&nbsp;Quel sont les 1ers et derniers hôtes de ce réseau
+          ?</p>
+        <p>192.0.2.49 + 192.0.2.62
+          <br>f.&nbsp;&nbsp;&nbsp;&nbsp;Quelle est la prochaine adresse disponible hors
+          de ce réseau ?</p>
+        <p>&nbsp;192.0.2.64
+          <br>g.&nbsp;&nbsp;&nbsp;&nbsp;Quelle est la valeur décimale du bit de poids
+          faible de la partie réseau ?
+          <br>16
+          <br>h.&nbsp;&nbsp;&nbsp;&nbsp;Quel est le nombre d’adresses disponibles sur
+          votre réseau ?&nbsp;
+          <br>16
+          <br>i.&nbsp;&nbsp;&nbsp;&nbsp;Quel est le nombre que vous devez rajouter à
+          cet identifiant de réseau pour obtenir la prochaine adresse disponible
+          hors de ce réseau ?16</p>
+        <p>4)&nbsp;&nbsp;&nbsp;&nbsp;Adresse IP 198.51.100.22 255.255.255.252
+          <br>a.&nbsp;&nbsp;&nbsp;&nbsp;Quel est le nombre de bit(s) de réseau sur le
+          quatrième octet ?&nbsp;
+          <br>6&nbsp;
+          <br>b.&nbsp;&nbsp;&nbsp;&nbsp;Quel est le préfixe CIDR ?&nbsp;
+          <br>/30
+          <br>c.&nbsp;&nbsp;&nbsp;&nbsp;Sur quel réseau est situé votre équipement ?
+          <br>198.51.100.20
+          <br>d.&nbsp;&nbsp;&nbsp;&nbsp;Quel est l’adresse de diffusion (dirigée) de
+          ce réseau ?
+          <br>198.51.100.23
+          <br>e.&nbsp;&nbsp;&nbsp;&nbsp;Quel sont les 1ers et derniers hôtes de ce réseau
+          ?
+          <br>21 et 22
+          <br>f.&nbsp;&nbsp;&nbsp;&nbsp;Quelle est la prochaine adresse disponible hors
+          de ce réseau ?
+          <br>198.51.100.24
+          <br>g.&nbsp;&nbsp;&nbsp;&nbsp;Quelle est la valeur décimale du bit de poids
+          faible de la partie réseau ?&nbsp;
+          <br>4
+          <br>h.&nbsp;&nbsp;&nbsp;&nbsp;Quel est le nombre d’adresses disponibles sur
+          votre réseau ?
+          <br>4
+          <br>i.&nbsp;&nbsp;&nbsp;&nbsp;Quel est le nombre que vous devez rajouter à
+          cet identifiant de réseau pour obtenir la prochaine adresse disponible
+          hors de ce réseau ?
+          <br>4
+          <br>5)&nbsp;&nbsp;&nbsp;&nbsp;Adresse IP 203.0.113.13 /30
+          <br>a.&nbsp;&nbsp;&nbsp;&nbsp;Quel est le nombre de bit(s) de réseau sur le
+          quatrième octet ?</p>
+        <p>6
+          <br>b.&nbsp;&nbsp;&nbsp;&nbsp;Quel est le masque ?</p>
+        <p>255.255.255.252
+          <br>c.&nbsp;&nbsp;&nbsp;&nbsp;Sur quel réseau est situé votre équipement ?</p>
+        <p>203.0.113.12
+          <br>d.&nbsp;&nbsp;&nbsp;&nbsp;Quel est l’adresse de diffusion (dirigée) de
+          ce réseau ?</p>
+        <p>15
+          <br>e.&nbsp;&nbsp;&nbsp;&nbsp;Quel sont les 1ers et derniers hôtes de ce réseau
+          ?</p>
+        <p>13 14
+          <br>f.&nbsp;&nbsp;&nbsp;&nbsp;Quelle est la prochaine adresse disponible hors
+          de ce réseau ?&nbsp;</p>
+        <p>16
+          <br>g.&nbsp;&nbsp;&nbsp;&nbsp;Quelle est la valeur décimale du bit de poids
+          faible de la partie réseau ?</p>
+        <p>4
+          <br>h.&nbsp;&nbsp;&nbsp;&nbsp;Quel est le nombre d’adresses disponibles sur
+          votre réseau ?</p>
+        <p>4
+          <br>i.&nbsp;&nbsp;&nbsp;&nbsp;Quel est le nombre que vous devez rajouter à
+          cet identifiant de réseau pour obtenir la prochaine adresse disponible
+          hors de ce réseau ?</p>
+        <p>4</p>
+        <p>6)&nbsp;&nbsp;&nbsp;&nbsp;Vous devez bâtir un réseau de 2 hôtes (maximum).
+          Quel masque et quel préfixe devez-vous adopter ?
+          <br>30 255.255.255.252 &nbsp; &nbsp;/30
+          <br>7)&nbsp;&nbsp;&nbsp;&nbsp;Vous devez bâtir un réseau de 6 hôtes (maximum).
+          Quel masque et quel préfixe devez-vous adopter ?
+          <br>255.255.255.248 /29
+          <br>8)&nbsp;&nbsp;&nbsp;&nbsp;Vous devez bâtir un réseau de 8 hôtes (maximum).
+          Quel masque et quel préfixe devez-vous adopter ?</p>
+        <p>9)&nbsp;&nbsp;&nbsp;&nbsp;Vous devez bâtir un réseau de 24 hôtes (maximum).
+          Quel masque et quel préfixe devez-vous adopter ?
+          <br>10)&nbsp;&nbsp;&nbsp;&nbsp;Vous devez bâtir un réseau de 32 hôtes (maximum).
+          Quel masque et quel préfixe devez-vous adopter ?
+          <br>11)&nbsp;&nbsp;&nbsp;&nbsp;Vous devez bâtir un réseau de 78 hôtes (maximum).
+          Quel masque et quel préfix devez-vous adopter ?
+          <br>12)&nbsp;&nbsp;&nbsp;&nbsp;Vous devez bâtir un réseau de 130 hôtes (maximum).
+          Quel masque et quel préfix devez -vous adopter ?</p>
+        <p>/24 255.255.255.0
+          <br>13)&nbsp;&nbsp;&nbsp;&nbsp;Vous devez bâtir un réseau de 250 hôtes (maximum).
+          Quel masque et quel préfix devez-vous adopter ?</p>
+        <p>/24 255.255.255.0
+          <br>14)&nbsp;&nbsp;&nbsp;&nbsp;Vous devez bâtir un réseau de 300 hôtes (maximum).
+          Quel masque et quel préfixe devez-vous adopter ?</p>
+        <p>/23 255.255.254.0</p>
+        <p>15)&nbsp;&nbsp;&nbsp;&nbsp;Vous devez réserver un bloc de 1024 adresses.
+          Quel masque et quel préfixe devez-vous adopter ?</p>
+        <p>/22 255.255.252</p>
+        <p>
+          <br>16)&nbsp;&nbsp;&nbsp;&nbsp;Vous devez réserver un bloc de 2048 adresses.
+          Quel masque et quel préfixe devez-vous adopter ?</p>
+        <p>/21 255.255.248.0
+          <br>17)&nbsp;&nbsp;&nbsp;&nbsp;Vous devez réserver un bloc de 4096 adresses.
+          Quel masque et quel préfixe devez-vous adopter ?</p>
+        <p>/20 255.255.240/0</p>
+        <p>18)&nbsp;&nbsp;&nbsp;&nbsp;Le bloc d’adresses 203.0.113.0/24 vous a été
+          attribué. Vois devez mettre en œuvre des réseaux d’au plus 15 hôtes. Énumérez
+          pour chaque réseau, le réseau, le premier et le dernier hôte ainsi que
+          le broadcast.</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>19)&nbsp;&nbsp;&nbsp;&nbsp;Le bloc d’adresses 203.0.113.0/24 vous a été
+          attribué. Vois devez mettre en œuvre :
+          <br>a.&nbsp;&nbsp;&nbsp;&nbsp;2 réseaux d’au plus 6 hôtes
+          <br>203.0.113.248 1er=hote 249 et la der 254
+          <br>b.&nbsp;&nbsp;&nbsp;&nbsp;1 réseau d’au plus 100 hôtes
+          <br>203.0.113.0 127&nbsp;</p>
+        <p>c.&nbsp;&nbsp;&nbsp;&nbsp;2 réseaux d’au plus 30 hôtes
+          <br>Énumérez pour chaque réseau, le réseau, le premier et le dernier hôte
+          ainsi que le broadcast.</p>
+        <p>20)&nbsp;&nbsp;&nbsp;&nbsp; Votre infrastructure comporte les réseaux
+          suivants :
+          <br>a.&nbsp;&nbsp;&nbsp;&nbsp;203.0.113..64 /26
+          <br>b.&nbsp;&nbsp;&nbsp;&nbsp;203.0.113..0 /29
+          <br>&nbsp;</p>
+        <p>Vous devez rajouter un bloc de 32 adresses en utilisant les adresses les
+          plus basses/petites possible.
+          <br>Énumérer pour ce bloc, les deux adresses extrêmes.
+          <br>&nbsp;</p>
+        <p><span class="text-big" style="background-color:hsl(0,0%,100%);color:hsl(0,75%,60%);"><code><strong>ouais le réseau</strong></code></span>
+        </p>
+        <p>si deux machines veulent communiquer ensemble, la première vérifie qu'on
+          est sur le même réseau (on vérifie le masque aka le nombre de bits de réseau)</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+      </div>
+    </div>
+  </body>
+
+</html>

@@ -1,0 +1,101 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>WSUS (windows server update service)</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>WSUS (windows server update service)</h1>
+
+      <div class="ck-content">
+        <p>tout d'abord, créer un serveur avec un AD la classique&nbsp;</p>
+        <p>ensuite créer un deuxième serveur ou on va installer le service WSUS</p>
+        <p>Note&nbsp;: sur certaines versions de Windows Server, le rôle s’appelle
+          «&nbsp;<strong>Service WSUS</strong>&nbsp;».</p>
+        <p>
+          <img src="https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-03-800x632.png"
+          alt="" srcset="https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-03-800x632.png 800w, https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-03-550x435.png 550w, https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-03-150x119.png 150w, https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-03-768x607.png 768w, https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-03-50x40.png 50w, https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-03.png 982w"
+          sizes="100vw" width="800" height="632">
+        </p>
+        <p>À l’étape suivante, cliquez tout simplement sur «&nbsp;<strong>Suivant</strong>&nbsp;».</p>
+        <p>on garde les paramètres par défaut jusqu'à cette page</p>
+        <figure class="image image-style-block-align-left">
+          <img style="aspect-ratio:784/557;" src="WSUS (windows server update se.png"
+          width="784" height="557">
+        </figure>
+        <p>ici on choisira un dossier partagé de préférence, avec une addresse de
+          partage de type" <strong>\\SRV-WSUS\update</strong>"</p>
+        <p>on garde les paramètres par défaut pour le reste, ça va installer IIS</p>
+        <p>ensuite on ouvre WSUS depuis le gestionnaire de serveur ou depuis windows</p>
+        <figure
+        class="image">
+          <img style="aspect-ratio:1636/885;" src="1_WSUS (windows server update se.png"
+          width="1636" height="885">
+          </figure>
+          <p>ensuite on garde par défaut jusqu'à choisir la synchronisation depuis
+            microsoft update</p>
+          <p>&nbsp;</p>
+          <figure class="image image-style-block-align-left">
+            <img style="aspect-ratio:741/544;" src="https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-21.png"
+            alt="" srcset="https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-21.png 741w, https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-21-550x404.png 550w, https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-21-150x110.png 150w, https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-21-50x37.png 50w"
+            sizes="100vw" width="741" height="544">
+          </figure>
+          <p>ici on se connecte aux serveur microsoft update ( c long )</p>
+          <figure
+          class="image image-style-block-align-left">
+            <img style="aspect-ratio:740/542;" src="https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-23.png"
+            alt="" srcset="https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-23.png 740w, https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-23-550x403.png 550w, https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-23-150x110.png 150w, https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-23-50x37.png 50w"
+            sizes="100vw" width="740" height="542">
+            </figure>
+            <p>on choisit ensuite les langues pour les mises à jours (anglais et français
+              suffiront)</p>
+            <figure class="image image-style-block-align-left">
+              <img style="aspect-ratio:740/544;" src="2_WSUS (windows server update se.png"
+              width="740" height="544">
+            </figure>
+            <p>ensuite on va choisir les produits dont on a besoin pour les mises à jours
+              ici en l'occurence Windows 10 et Windows Server 2019</p>
+            <figure class="image image-style-block-align-left">
+              <img style="aspect-ratio:740/545;" src="https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-25.png"
+              alt="" srcset="https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-25.png 740w, https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-25-550x405.png 550w, https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-25-150x110.png 150w, https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-25-50x37.png 50w"
+              sizes="100vw" width="740" height="545">
+            </figure>
+            <p>Dans un environnement où il y a la volonté de distribuer les mises à niveau
+              de Windows via WSUS, il sera nécessaire de cocher l’option «&nbsp;<strong>Upgrades</strong>&nbsp;»,
+              et prendre les mises à jours nécéssaires pour windows avec</p>
+            <p>
+              <img src="https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-27.png"
+              alt="" srcset="https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-27.png 737w, https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-27-550x405.png 550w, https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-27-150x111.png 150w, https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-27-50x37.png 50w"
+              sizes="100vw" width="737" height="543">
+            </p>
+            <p>La synchronisation des mises à jour avec les serveurs Microsoft Update
+              doit être planifiée afin d’être sûr de recevoir les dernières mises à jour.
+              De préférence, cette synchronisation sera planifiée la nuit afin de ne
+              pas perturber la production (gestion de la bande passante). Par exemple,
+              une fois par jour à 02:00 du matin comme sur l’exemple ci-dessous.</p>
+            <p>
+              <img src="https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-28.png"
+              alt="" srcset="https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-28.png 739w, https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-28-550x404.png 550w, https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-28-150x110.png 150w, https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-28-50x37.png 50w"
+              sizes="100vw" width="739" height="543">
+            </p>
+            <p>Cochez l’option «&nbsp;<strong>Commencer la synchronisation initiale</strong>&nbsp;»&nbsp;/
+              «&nbsp;<strong>Begin initial synchronization</strong>&nbsp;» si vous souhaitez
+              réaliser une première synchronisation dès maintenant. (c long)</p>
+            <p>
+              <img src="https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-29.png"
+              alt="" srcset="https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-29.png 739w, https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-29-550x405.png 550w, https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-29-150x110.png 150w, https://www.it-connect.fr/wp-content-itc/uploads/2022/08/installation-wsus-windows-server-2022-29-50x37.png 50w"
+              sizes="100vw" width="739" height="544">
+            </p>
+            <p>Cliquez sur «&nbsp;<strong>Terminer</strong>&nbsp;» / «&nbsp;<strong>Finish</strong>&nbsp;»&nbsp;:
+              l’initialisation de WSUS est terminée&nbsp;!</p>
+            <p>&nbsp;</p>
+      </div>
+    </div>
+  </body>
+
+</html>

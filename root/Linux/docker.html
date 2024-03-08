@@ -1,0 +1,31 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>docker</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>docker</h1>
+
+      <div class="ck-content">
+        <p>la classique apt update &amp;&amp; apt upgrade</p>
+        <p>&nbsp;</p><pre><code class="language-text-plain">apt install docker.io docker-compose
+usermod -aG docker $USER</code></pre>
+        <p>redémarrer le pc après la deuxième commande pour que les modifications
+          soient pris en compte</p>
+        <p>et vu qu'on a mis un user pour docker, <strong>on ne lance pas docker en root</strong>
+        </p><pre><code class="language-text-plain">docker --version
+
+docker run hello-world</code></pre>
+        <p>ptit test pour voir si tout fonctionne bien</p>
+        <p>&nbsp;</p>
+      </div>
+    </div>
+  </body>
+
+</html>

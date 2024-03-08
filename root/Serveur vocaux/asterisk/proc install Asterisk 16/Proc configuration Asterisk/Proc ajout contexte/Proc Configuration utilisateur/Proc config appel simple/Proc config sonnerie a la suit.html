@@ -1,0 +1,77 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>Proc config sonnerie a la suite</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>Proc config sonnerie a la suite</h1>
+
+      <div class="ck-content">
+        <div class="content">
+          <div class="ck-content">
+            <div>
+              <div>
+                <ul>
+                  <li><span class="text-big"><strong>Pour faire sonner a la suite des numéros, on va configurer de la même manière que pour un appel simple, mais en modifiant la ligne:</strong></span>
+
+                    <ul>
+                      <li><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong>exten =&gt; _1XX, n, Dial(SIP/${EXTEN},10)</strong></span>
+
+                        <span
+                        class="text-big"><strong> -----→ </strong>
+
+                          </span><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong>exten =&gt; 1000, n, Dial(SIP/XXX,10)</strong></span>
+
+                          <ul>
+                            <li><span class="text-big" style="color:hsl(30, 75%, 60%)"><strong>1000:</strong></span>
+
+                              <span
+                              class="text-big"><strong> correspond au numéro qu'on utilisera pour faire sonner a la suite un groupe (contexte) d'utilisateurs configuré a l'avance</strong>
+
+                                </span>
+                            </li>
+                            <li><span class="text-big"><strong>on a remplacé </strong></span><span class="text-big"
+                              style="color:hsl(30, 75%, 60%)"><strong>${EXTEN}</strong></span>
+ <span class="text-big"><strong> par </strong>
+                        </span><span class="text-big" style="color:hsl(30, 75%, 60%)"><strong>XXX</strong></span>
+
+                              <span
+                              class="text-big"><strong> qui sera un numéro dans notre groupe</strong>
+
+                                </span>
+                            </li>
+                          </ul>
+                      </li>
+                      <li><span class="text-big"><strong>Puis on répètera cette ligne pour chaque numéro de notre groupe qu'on veut faire sonner après celui la.</strong></span>
+
+                      </li>
+                    </ul>
+                  </li>
+                  <li><span class="text-big"><strong>On obtiens donc le résultat suivant (avec comme exemple, trois numéros de mon contexte local):</strong></span>
+
+                  </li>
+                </ul>
+                <figure class="image">
+                  <img src="Proc%20config%20sonnerie%20a%20la%20suite/image.png" />
+                </figure>
+                <p> </p>
+                <ul>
+                  <li><span class="text-big"><strong>Et voila, sauvegardez, reloadez Asterisk et tentez un appel pour s'assurer que ça marche.</strong></span>
+
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

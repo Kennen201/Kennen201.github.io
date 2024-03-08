@@ -1,0 +1,77 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>Proc configuration Asterisk</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>Proc configuration Asterisk</h1>
+
+      <div class="ck-content">
+        <div class="content">
+          <div class="ck-content">
+            <ul>
+              <li><span class="text-big"><strong>Maintenant que Asterisk est installé, on va faire une configuration initiale en vidant le fichier SIP.conf:</strong></span>
+
+                <ul>
+                  <li><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong>cd /etc/asterisk</strong></span>
+
+                    <span
+                    class="text-big"><strong> (je vais dans le répertoire ou est sip.conf)</strong>
+
+                      </span>
+                  </li>
+                  <li><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong>cp /etc/asterisk/sip.conf /etc/asterisk/sip.conf.original</strong></span>
+
+                    <span
+                    class="text-big"><strong> (je le duplique pour garder l'original)</strong>
+
+                      </span>
+                  </li>
+                  <li><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong>&gt; /etc/asterisk/sip.conf</strong></span>
+
+                    <span
+                    class="text-big"><strong> (je vide SIP.conf)</strong>
+
+                      </span>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <p> </p>
+            <ul>
+              <li><span class="text-big"><strong>Maintenant, on va dans sip.conf:</strong></span>
+
+                <ul>
+                  <li><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong>nano /etc/asterisk/sip.conf</strong></span>
+
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <p> </p>
+            <ul>
+              <li><span class="text-big"><strong>Enfin on va rajouter les lignes suivantes:</strong></span>
+
+              </li>
+            </ul>
+            <figure class="image">
+              <img src="Proc%20configuration%20Asterisk/image.png" />
+            </figure>
+            <ul>
+              <li><span class="text-big"><strong>Sauvegardez et reloadez Asterisk. </strong></span>
+
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

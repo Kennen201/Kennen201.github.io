@@ -1,0 +1,136 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>correction pt &quot;administrateuretudiantsformateurs&quot;</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>correction pt &quot;administrateuretudiantsformateurs&quot;</h1>
+
+      <div class="ck-content"><pre><code class="language-text-plain">Switch&gt;
+
+
+
+Switch&gt;en
+
+Switch#conf t
+
+Enter configuration commands, one per line.  End with CNTL/Z.
+
+Switch(config)#hostname BatSud-1
+
+BatSud-1(config)#vlan 29
+
+BatSud-1(config-vlan)#name Administratif
+
+BatSud-1(config-vlan)#vlan 30
+
+
+
+BatSud-1(config-vlan)#name Formateurs
+
+BatSud-1(config-vlan)#vlan 30
+
+BatSud-1(config-vlan)#name Etudiants
+
+BatSud-1(config-vlan)#exit
+
+BatSud-1(config)#show vlan
+
+BatSud-1(config)#show vlan brief
+
+                  ^
+
+% Invalid input detected at '^' marker.
+
+	
+
+BatSud-1(config)#exit
+
+BatSud-1#
+
+%SYS-5-CONFIG_I: Configured from console by console
+
+show vlan brief
+
+
+
+VLAN Name                             Status    Ports
+
+---- -------------------------------- --------- -------------------------------
+
+1    default                          active    Fa0/1, Fa0/2, Fa0/3, Fa0/4
+
+                                                Fa0/5, Fa0/6, Fa0/7, Fa0/8
+
+                                                Fa0/9, Fa0/10, Fa0/11, Fa0/12
+
+                                                Fa0/13, Fa0/14, Fa0/15, Fa0/16
+
+                                                Fa0/17, Fa0/18, Fa0/19, Fa0/20
+
+                                                Fa0/21, Fa0/22, Fa0/23, Fa0/24
+
+                                                Gig0/1, Gig0/2
+
+29   Administratif                    active    
+
+30   Etudiants                        active    
+
+31   Formateurs                       active    
+
+1002 fddi-default                     active    
+
+1003 token-ring-default               active    
+
+1004 fddinet-default                  active    
+
+1005 trnet-default                    active    
+
+BatSud-1#conf t
+
+Enter configuration commands, one per line.  End with CNTL/Z.
+
+BatSud-1(config)#interface
+
+BatSud-1(config)#interface range fa0/1-7
+
+BatSud-1(config-if-range)#switchpo
+
+BatSud-1(config-if-range)#switchport mode
+
+BatSud-1(config-if-range)#switchport mode v
+
+BatSud-1(config-if-range)#switchport mode vl
+
+BatSud-1(config-if-range)#switchport mode acc
+
+BatSud-1(config-if-range)#switchport mode access
+
+BatSud-1(config-if-range)#switchport no neno
+
+BatSud-1(config-if-range)#switchport no nego
+
+BatSud-1(config-if-range)#switchport none
+
+BatSud-1(config-if-range)#switchport nonegotiate 
+
+BatSud-1(config-if-range)#switchp
+
+BatSud-1(config-if-range)#switchport acc
+
+BatSud-1(config-if-range)#switchport access vl
+
+BatSud-1(config-if-range)#switchport access vlan 29
+
+BatSud-1(config-if-range)#</code></pre>
+      </div>
+    </div>
+  </body>
+
+</html>

@@ -1,0 +1,83 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>DHCP (Windows)</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>DHCP (Windows)</h1>
+
+      <div class="ck-content">
+        <div class="content">
+          <div class="ck-content">
+             <h2>c quoi en fait</h2>
+
+            <p>Le DHCP attribue automatiquement une adresse IP à une nouvelle machine
+              qui se connecte au réseau si ses préférences sont définies sur obtenir
+              une adresse IP automatiquement (DHCP) au lieu de définir une IP fixe.</p>
+            <p>C'est pratique car ça évite notamment un grand travail à la main pour
+              les techniciens réseaux.</p>
+             <h2>Port</h2>
+
+            <p>67 sur DHCPDISCOVER (la machine envoie un message pour découvrir si un
+              DHCP est existant), 68 pour le retour du ou des serveur DHCP, (nommé DHCPOFFER)</p>
+            <p>67 SERVEUR 68 CLIENT</p>
+             <h2>Acronyme</h2>
+
+            <p>Dynamic Host Configuration Protocol (Protocole de configuration dynamique
+              des hôtes)</p>
+             <h2>comment ça bosse</h2>
+
+            <p>machine avec carte réseau sans adresse IP sur un nouveau réseau = envoie
+              d'un message pour savoir si un serveur DHCP peut lui en fournir une
+              <br
+              />=&gt; <strong>DHCPDISCOVER</strong>
+
+            </p>
+            <p>tout serveur DHCP sur le réseau en mesure de répondre envoie une offre
+              d'adresse à la machine hôte du message
+              <br />=&gt;<strong>DHCPOFFER</strong>
+
+            </p>
+            <p>la machine hôte envoie une réponse, le serveur stock l'adresse ip dans
+              sa base de donnée, et les autres serveurs qui ne recoivent pas ce paquet
+              s'en servent comme indication pour considérer qu'ils n'ont pas été choisi
+              comme serveur DHCP.
+              <br />=&gt;<strong>DHCPREQUEST</strong>
+
+            </p>
+            <p>le serveur peut délivrer l'adresse initialement prévu, alors il envoie
+              un paquet contenant l'adresse de la machine à l'hôte et divers paramètres
+              en plus, passerelle par défaut, subnet mask, serveur DNS.
+              <br />=&gt;<strong>DHCPACK</strong>
+
+            </p>
+            <p>si le serveur ne peut au final pas délivrer l'adresse IP initialement
+              offerte
+              <br />=&gt;<strong>DHCPNAK</strong>
+
+            </p>
+            <p>si la machine hôte reçoit une ip déjà utilisé 
+              <br />=&gt;<strong>DHCPDECLINE</strong>
+
+            </p>
+            <p>lorsque le client se libère de son IP/ne renouvelle pas le bail
+              <br />=&gt;<strong>DHCPRELEASE</strong>
+
+            </p>
+            <p>le client souhaite obtenir des infos sur les paramètres
+              <br />=&gt;<strong>DHCPINFORM</strong>
+
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

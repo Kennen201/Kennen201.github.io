@@ -1,0 +1,128 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>ocs</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>ocs</h1>
+
+      <div class="ck-content">
+        <p>alors</p><pre><code class="language-text-plain">apt install apache2-dev
+
+apt install php-soap
+
+
+
+cpan install –force CPAN ou cpan install -f CPAN
+
+cpan install YAML
+
+
+
+apt -y install libxml-simple-perl libperl5.36 libdbi-perl libdbd-mysql-perl libapache-dbi-perl libsoap-lite-perl libarchive-zip-perl make build-essential
+
+
+
+apt -y install libapache2-mod-perl2 libapache-dbi-perl libapache-db-perl libapache2-mod-php
+
+ 
+
+apt -y install php php-zip php-pclzip php-gd php-mysql php-soap php-curl php-json php-xml php-mbstring
+
+
+
+apt -y install perl libxml-simple-perl libcompress-zlib-perl libdbi-perl libdbd-mysql-perl libnet-ip-perl libsoap-lite-perl libio-compress-perl libapache-dbi-perl libapache2-mod-perl2 libapache2-mod-perl2-dev libdbd-mysql-perl libnet-ip-perl libxml-simple-perl libarchive-zip-perl
+
+
+
+apt -y install php-pclzip make build-essential libdbd-mysql-perl libnet-ip-perl libxml-simple-perl php
+
+php-mbstring php-soap php-mysql php-curl php-xml php-zip
+
+
+
+cpan install XML::Entities Apache2::SOAP Net::IP Apache::DBI Mojolicious Switch Plack::Handler Archive::Zip
+
+
+
+&nbsp;mysql_secure_installation
+
+&nbsp;
+
+&nbsp;mysql -u root -p
+
+
+
+CREATE DATABASE ocs;
+
+GRANT ALL PRIVILEGES ON ocs.* TO 'user'@'localhost' IDENTIFIED BY 'Azerty1';
+
+exit
+
+
+
+---
+
+
+
+wget https://github.com/OCSInventory-NG/OCSInventory-ocsreports/releases/download/2.12.1/OCSNG_UNIX_SERVER-2.12.1.tar.gz
+
+
+
+tar -xzf OCSNG_UNIX_SERVER-2.12.1.tar.gz
+
+
+
+cd OCSNG_UNIX_SERVER-2.12.1/
+
+
+
+sh setup.sh
+
+
+
+systemctl restart apache2
+
+
+
+---
+
+
+
+chown root:www-data /var/lib/ocsinventory-reports
+
+
+
+
+
+a2enconf z-ocsinventory-server
+
+
+
+a2enconf ocsinventory-reports
+
+
+
+a2enconf zz-ocsinventory-restapi
+
+
+
+service apache2 restart</code></pre>
+        <p>&nbsp;</p>
+        <p>wget <a href="https://github.com/pluginsGLPI/ocsinventoryng/releases/download/2.0.4/glpi-ocsinventoryng-2.0.4.tar.bz2">https://github.com/pluginsGLPI/ocsinventoryng/releases/download/2.0.4/glpi-ocsinventoryng-2.0.4.tar.bz2</a>
+        </p>
+        <p>&nbsp;</p>
+        <p style="margin-left:40px;">go pdf</p>
+        <p><a href="https://tutos-info.fr/wp-content/uploads/2023/11/TUTORIEL-INSTALLER-OCS-INVENTORY-2.12-SUR-DEBIAN-12.pdf">https://tutos-info.fr/wp-content/uploads/2023/11/TUTORIEL-INSTALLER-OCS-INVENTORY-2.12-SUR-DEBIAN-12.pdf</a>
+        </p>
+      </div>
+    </div>
+  </body>
+
+</html>

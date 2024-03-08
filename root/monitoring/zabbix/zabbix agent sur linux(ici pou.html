@@ -1,0 +1,92 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>zabbix agent sur linux(ici pour un ftp)</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>zabbix agent sur linux(ici pour un ftp)</h1>
+
+      <div class="ck-content">
+        <h2>install vsftpd</h2><pre><code class="language-text-plain">apt update
+apt install vsftpd
+</code></pre>
+        <h2>Step 1: Add Zabbix repository to Debian system</h2>
+        <p>on prend les paquets zabbix puis on les installe</p>
+        <p><i><strong>Add Zabbix repository on Debian 11:</strong></i>
+        </p><pre><code class="language-text-plain">wget https://repo.zabbix.com/zabbix/5.0/debian/pool/main/z/zabbix-release/zabbix-release_5.0-2+debian11_all.deb
+dpkg -i zabbix-release_5.0-2+debian11_all.deb
+apt update</code></pre>
+        <h2>Step 2: Install Zabbix Agent on Debian 11 / Debian 10</h2>
+        <p>Zabbix Server uses an agent or SNMP to monitor its clients. Let us explore
+          how it uses the agent.</p>
+        <h3>Install Zabbix Agent on Debian Linux</h3><pre><code class="language-text-plain">sudo apt update
+sudo apt install zabbix-agent</code></pre>
+        <p>Start and enable Zabbix agent</p><pre><code class="language-text-plain">sudo systemctl enable zabbix-agent
+sudo systemctl start zabbix-agent</code></pre>
+        <h2>Step 3: Configure Zabbix Agenton Debian 11 / Debian 10</h2>
+        <p>on ouvre le fichier conf de zabbix</p><pre><code class="language-text-plain">nano /etc/zabbix/zabbix_agentd.conf</code></pre>
+        <p>il faut changer ces options pour que ça fonctionne à minima</p><pre><code class="language-text-plain">Server=172.18.36.77             # Incoming connections will be accepted only from the hosts listed here.
+ListenPort=10050                # Agent will listen on this port for connections from the server
+ListenIP=0.0.0.0                # List of comma delimited IP addresses that the agent should listen on
+ServerActive=172.18.36.77       # List of comma delimited IP:port pairs of Zabbix servers and Zabbix proxies for active checks
+Hostname=Zabbix server2         # Optional name for the server to be monitored</code></pre>
+        <h2>Step 4: Allow Listening ports on the firewall</h2>
+        <p><span style="background-color:hsl(0,0%,100%);color:hsl(0,75%,60%);"><strong>UNIQUEMENT NECESSAIRE SI UN PAREFEU EST EN PLACE&nbsp;</strong></span>
+        </p><pre><code class="language-text-plain">sudo ufw allow 10050
+sudo ufw reload</code></pre>
+        <h2>Step 5: Add the host in Zabbix Server</h2>
+        <p>Launch your Zabbix Server on your favorite browser and navigate as follows</p>
+        <p><strong>Configuration</strong> &gt; <strong>Hosts</strong>
+        </p>
+        <p><a href="https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-agent-1.png?ezimgfmt=rs:665x458/rscb23/ng:webp/ngcb23"><img src="https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-agent-1.png?ezimgfmt=rs:665x458/rscb23/ng:webp/ngcb23" alt="zabbix agent 1" srcset="https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-agent-1.png?ezimgfmt=ng:webp/ngcb23 844w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-agent-1-300x207.png?ezimgfmt=ng:webp/ngcb23 300w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-agent-1-768x530.png?ezimgfmt=ng:webp/ngcb23 768w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-agent-1-218x150.png?ezimgfmt=ng:webp/ngcb23 218w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-agent-1-696x480.png?ezimgfmt=ng:webp/ngcb23 696w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-agent-1-609x420.png?ezimgfmt=ng:webp/ngcb23 609w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-agent-1-100x70.png?ezimgfmt=ng:webp/ngcb23 100w" sizes="100vw" width="665" height="458"></a>
+        </p>
+        <p>Click on “<strong>Create Host</strong>” on the top right corner</p>
+        <p><a href="https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-agent-2-create-host.png?ezimgfmt=rs:696x180/rscb23/ng:webp/ngcb23"><img src="https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-agent-2-create-host-1024x261.png?ezimgfmt=rs:696x180/rscb23/ng:webp/ngcb23" alt="zabbix agent 2 create host" srcset="https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-agent-2-create-host-1024x261.png?ezimgfmt=ng:webp/ngcb23 1024w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-agent-2-create-host-300x76.png?ezimgfmt=ng:webp/ngcb23 300w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-agent-2-create-host-768x196.png?ezimgfmt=ng:webp/ngcb23 768w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-agent-2-create-host-696x177.png?ezimgfmt=ng:webp/ngcb23 696w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-agent-2-create-host-1068x272.png?ezimgfmt=ng:webp/ngcb23 1068w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-agent-2-create-host.png?ezimgfmt=ng:webp/ngcb23 1365w" sizes="100vw" width="706" height="180"></a>
+        </p>
+        <p>Fill-up the form accordingly. Please note that the “<strong>Host name</strong>”
+          part must match what you entered in the “<strong>Hostname</strong>” field
+          in the agent configuration file.</p>
+        <p><a href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%221024%22%20height=%22680%22%3E%3C/svg%3E"><img src="https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-agent-3-create-host-1024x680.png?ezimgfmt=rs:696x477/rscb23/ng:webp/ngcb23" alt="zabbix agent 3 create host" srcset="https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-agent-3-create-host-1024x680.png?ezimgfmt=ng:webp/ngcb23 1024w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-agent-3-create-host-300x199.png?ezimgfmt=ng:webp/ngcb23 300w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-agent-3-create-host-768x510.png?ezimgfmt=ng:webp/ngcb23 768w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-agent-3-create-host-696x462.png?ezimgfmt=ng:webp/ngcb23 696w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-agent-3-create-host-632x420.png?ezimgfmt=ng:webp/ngcb23 632w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-agent-3-create-host.png?ezimgfmt=ng:webp/ngcb23 1051w" sizes="100vw" width="718" height="477"></a>
+        </p>
+        <p>Click on “<strong>Add</strong>” button when you are done as illustrated
+          above.</p>
+        <h2>Step 6: Add templates</h2>
+        <p>Once you are done adding the host, the next step is to create templates
+          which guides Zabbix Server on what you would wish to monitor in your client.
+          We are going to add one template as an example.</p>
+        <h3>Navigate to the Templates page</h3>
+        <p>Once you add your host, you should see it populate under <strong>Configuration</strong> &gt; <strong>Hosts</strong> page
+          as shown below</p>
+        <p><a href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%221024%22%20height=%22648%22%3E%3C/svg%3E"><img src="https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-add-template-1-1-1024x648.png?ezimgfmt=rs:677x428/rscb23/ng:webp/ngcb23" alt="zabbix add template 1 1" srcset="https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-add-template-1-1-1024x648.png?ezimgfmt=ng:webp/ngcb23 1024w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-add-template-1-1-300x190.png?ezimgfmt=ng:webp/ngcb23 300w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-add-template-1-1-768x486.png?ezimgfmt=ng:webp/ngcb23 768w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-add-template-1-1-696x440.png?ezimgfmt=ng:webp/ngcb23 696w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-add-template-1-1-664x420.png?ezimgfmt=ng:webp/ngcb23 664w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-add-template-1-1.png?ezimgfmt=ng:webp/ngcb23 1034w" sizes="100vw" width="677" height="428"></a>
+        </p>
+        <p>Click in the Server you would wish to add templates then click on “<strong>Templates</strong>”
+          option as illustrated below.</p>
+        <p><a href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22793%22%20height=%22456%22%3E%3C/svg%3E"><img src="https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-add-template-2.png?ezimgfmt=rs:696x400/rscb23/ng:webp/ngcb23" alt="zabbix add template 2" srcset="https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-add-template-2.png?ezimgfmt=ng:webp/ngcb23 793w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-add-template-2-300x173.png?ezimgfmt=ng:webp/ngcb23 300w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-add-template-2-768x442.png?ezimgfmt=ng:webp/ngcb23 768w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-add-template-2-696x400.png?ezimgfmt=ng:webp/ngcb23 696w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-add-template-2-730x420.png?ezimgfmt=ng:webp/ngcb23 730w" sizes="100vw" width="793" height="456"></a>
+        </p>
+        <p>Click on “<strong>Select</strong>” button to load a plenteous list of
+          templates to choose from.</p>
+        <p><a href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22989%22%20height=%22672%22%3E%3C/svg%3E"><img src="https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-add-template-3.png?ezimgfmt=rs:686x466/rscb23/ng:webp/ngcb23" alt="zabbix add template 3" srcset="https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-add-template-3.png?ezimgfmt=ng:webp/ngcb23 989w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-add-template-3-300x204.png?ezimgfmt=ng:webp/ngcb23 300w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-add-template-3-768x522.png?ezimgfmt=ng:webp/ngcb23 768w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-add-template-3-696x473.png?ezimgfmt=ng:webp/ngcb23 696w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-add-template-3-618x420.png?ezimgfmt=ng:webp/ngcb23 618w" sizes="100vw" width="686" height="466"></a>
+        </p>
+        <p>After you are done, simply click on “<strong>Update</strong>” to update
+          the details of the server to be monitored.</p>
+        <p><a href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22794%22%20height=%22501%22%3E%3C/svg%3E"><img src="https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-add-template-4.png?ezimgfmt=rs:680x429/rscb23/ng:webp/ngcb23" alt="zabbix add template 4" srcset="https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-add-template-4.png?ezimgfmt=ng:webp/ngcb23 794w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-add-template-4-300x189.png?ezimgfmt=ng:webp/ngcb23 300w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-add-template-4-768x485.png?ezimgfmt=ng:webp/ngcb23 768w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-add-template-4-696x439.png?ezimgfmt=ng:webp/ngcb23 696w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-add-template-4-666x420.png?ezimgfmt=ng:webp/ngcb23 666w" sizes="100vw" width="680" height="429"></a>
+        </p>
+        <p>And we are done!</p>
+        <p><a href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22921%22%20height=%22679%22%3E%3C/svg%3E"><img src="https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-add-template-5.png?ezimgfmt=rs:692x510/rscb23/ng:webp/ngcb23" alt="zabbix add template 5" srcset="https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-add-template-5.png?ezimgfmt=ng:webp/ngcb23 921w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-add-template-5-300x221.png?ezimgfmt=ng:webp/ngcb23 300w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-add-template-5-768x566.png?ezimgfmt=ng:webp/ngcb23 768w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-add-template-5-696x513.png?ezimgfmt=ng:webp/ngcb23 696w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-add-template-5-570x420.png?ezimgfmt=ng:webp/ngcb23 570w,https://computingforgeeks.com/wp-content/uploads/2020/02/zabbix-add-template-5-80x60.png?ezimgfmt=ng:webp/ngcb23 80w" sizes="100vw" width="692" height="510"></a>
+        </p>
+        <h2>&nbsp;</h2>
+        <p>template vsftpd (pour voir le status)</p>
+        <p>on peut utiliser systemctl stop vsftpd.service pour arrêter le service
+          et voir si ça remonte bien dans zabbix</p>
+        <p><a class="reference-link" href="zabbix agent sur linux(ici pou.xml">Template App vsftpd.xml</a>&nbsp;</p>
+      </div>
+    </div>
+  </body>
+
+</html>

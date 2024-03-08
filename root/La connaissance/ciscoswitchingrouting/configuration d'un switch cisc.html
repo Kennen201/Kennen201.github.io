@@ -1,0 +1,61 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>configuration d&#39;un switch cisco</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>configuration d&#39;un switch cisco </h1>
+
+      <div class="ck-content">
+        <p>c'est une bonne idée de réinitialiser le switch si on ne sait pas s'il
+          lui restait une config, sur une grande partie des switchs, rester appuyer
+          sur le boutton devant pendant <strong>15 bonnes secondes</strong> ou attendre
+          de voir si quelque chose s'affiche sur l'écran de console</p>
+        <p>faut dl putty ou un équivalent</p>
+        <p>dans putty :</p>
+        <figure class="image">
+          <img style="aspect-ratio:601/539;" src="configuration d'un switch cisc.png"
+          width="601" height="539">
+        </figure>
+        <p>dans putty on choisit bien le mode serial vu qu'on se connecte via un
+          cable qui est dans le port console</p>
+        <p>ensuite dans le gestionnaire de tâches, on regarde sur quelle interface
+          le port est connecté</p>
+        <p>on met un mot de passe en premier lorsqu'on rentre dans le switch</p>
+        <p>#enable secret azerty</p>
+        <p>&nbsp;</p>
+        <p>ici on met une adresse pour un vlan, le VLAN1 est celui par défaut qui
+          est sur toutes les interfaces par défaut, mais qui n'est pas administrativement
+          actif, d'où le no shutdown en commande</p><pre><code class="language-text-plain">Enter configuration commands, one per line.  End with CNTL/Z.
+
+switch1(config)#interf
+
+switch1(config)#interface vlan1
+
+switch1(config-if)#ip address 172?
+
+A.B.C.D
+
+
+
+switch1(config-if)#ip address 172.31.0.100 255.255.255.0
+
+switch1(config-if)#no shut
+
+switch1(config-if)#no shutdown
+
+switch1(config-if)#exit
+</code></pre>
+        <p>on peut se servir de <strong>show ip interface brief</strong> pour voir
+          si la VLAN à bien pris l'adresse qu'on lui à mis</p>
+      </div>
+    </div>
+  </body>
+
+</html>

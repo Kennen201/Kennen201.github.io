@@ -1,0 +1,117 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>ssh</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>ssh</h1>
+
+      <div class="ck-content">
+        <p>ici on met une adresse pour un vlan, le VLAN1 est celui par défaut qui
+          est sur toutes les interfaces par défaut, mais qui n'est pas administrativement
+          actif, d'où le no shutdown en commande</p><pre><code class="language-text-plain">Enter configuration commands, one per line.  End with CNTL/Z.
+switch1(config)#interf
+switch1(config)#interface vlan1
+switch1(config-if)#ip address 172?
+A.B.C.D
+
+switch1(config-if)#ip address 172.31.0.100 255.255.255.0
+switch1(config-if)#no shut
+switch1(config-if)#no shutdown
+switch1(config-if)#exit
+</code></pre>
+        <p>on peut se servir de <strong>show ip interface brief</strong> pour voir
+          si la VLAN à bien pris l'adresse qu'on lui à mis</p>
+        <p>ensuite on met un nom de domaine (pas besoin qui existe vraiment pdt le
+          cours)</p><pre><code class="language-text-plain">Enter configuration commands, one per line.  End with CNTL/Z.
+
+switch1(config)#ip domain
+
+
+switch1(config)#ip domain-name tssr.local
+
+
+il faut aussi faire ip ssh version 2 pour que ça se mette en version 2 et pas 1 mdr
+</code></pre>
+        <p>ensuite il nous faut créer une clé d'encryption pour pouvoir activer le
+          sshV2</p><pre><code class="language-text-plain">switch1(config)#crypto key generate rsa
+
+The name for the keys will be: switch1.tssr.local
+
+Choose the size of the key modulus in the range of 360 to 2048 for your
+
+  General Purpose Keys. Choosing a key modulus greater than 512 may take
+
+  a few minutes.
+
+
+
+How many bits in the modulus [512]: 1024
+
+% Generating 1024 bit RSA keys, keys will be non-exportable...[OK</code></pre>
+        <p>la clé doit faire plus de 768 bits pour que ssh l'accepte</p><pre><code class="language-text-plain">switch1(config)#username toto secret toto
+
+
+switch1(config)#line vty 0 4
+</code></pre>
+        <p>line vty 0 4 signifie qu'on va autoriser 5 sessions en ssh</p><pre><code class="language-text-plain">itch1(config)#line vty 0 4
+
+switch1(config-line)#login
+
+
+
+switch1(config-line)#login ?
+
+  local  Local password checking
+
+  &lt;cr&gt;
+
+
+
+switch1(config-line)#login local
+
+
+
+
+switch1(config-line)#trans
+
+switch1(config-line)#transport input ssh</code></pre>
+        <p>la classique en résumé :</p>
+        <p>1)branchements réseaux / console et état des leds</p>
+        <p>2)config standard :</p>
+        <p style="margin-left:40px;">a.hostname</p>
+        <p style="margin-left:40px;">b. enable secret</p>
+        <p>3) attribution adresse ip VLAN /svi et vérification de ping</p>
+        <p>4) SSH</p>
+        <p style="margin-left:40px;">a. version (ssh version 2)</p>
+        <p style="margin-left:40px;">b. nom de domaine (jsplus)</p>
+        <p style="margin-left:40px;">c. clés de chiffrement (crypto key generate)</p>
+        <p style="margin-left:40px;">d. création des utilisateurs + mdp si login local</p>
+        <p style="margin-left:40px;">e. configuration des virtuals Teletype VTY</p>
+        <p style="margin-left:80px;">1)login local (ou aa)</p>
+        <p style="margin-left:80px;">2) type de transport entran</p>
+        <p>mode de configuration global : hostname</p>
+        <p style="margin-left:240px;">: enable secret</p>
+        <p>&nbsp;mode configuration interface : vlan idVlan (ex: vlan 1 par défaut)</p>
+        <p
+        style="margin-left:40px;">no shutdown si vlan 1</p>
+          <p style="margin-left:40px;">ip address&nbsp;</p>
+          <p style="margin-left:40px;">vérification que la SVI(interface virtuelle) est up</p>
+          <p style="margin-left:40px;">vérification par ping</p>
+          <p>mode configuration global : ssh version la + haute (ssh version ?)</p>
+          <p>global : crypto key generate rsa puis choix de la longueur de clé</p>
+          <p>global : username toto secret motdepasse&nbsp;</p>
+          <p>passage en mode de configuration line VTY : line vty 0 4 (5 sessions simultanées)</p>
+          <p>mode de configuration line VTY : login local&nbsp;</p>
+          <p>mode de configuration line VTY : transport input ssh</p>
+      </div>
+    </div>
+  </body>
+
+</html>

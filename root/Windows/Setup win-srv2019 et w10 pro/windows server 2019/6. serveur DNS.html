@@ -1,0 +1,122 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>6. serveur DNS</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>6. serveur DNS</h1>
+
+      <div class="ck-content">
+        <div class="content">
+          <div class="ck-content">
+            <p>Activer juste la zone de recherche inversée car la zone de recherche de
+              base est configuré par l'AD DS</p>
+            <p style="margin-left:auto">Gérer =&gt; ajouter un role ou une fonctionnalité </p>
+            <figure class="image image-style-block-align-left image_resized"
+            style="width:65.54%">
+              <img src="https://goopensource.fr/wp-content/uploads/2020/12/gestionnaire-serveur-1.png"
+              />
+            </figure>
+            <p style="margin-left:auto">Poursuivez à travers les menus jusqu’à la page d’ajout des rôles. Ajoutez
+              le rôle DNS.</p>
+            <p>
+              <img src="https://goopensource.fr/wp-content/uploads/2020/12/role-2.png"
+              />
+            </p>
+            <p style="margin-left:auto">Ajoutez les fonctionnalités recommandées proposées pour l’installation
+              du rôle :</p>
+            <p>
+              <img src="https://goopensource.fr/wp-content/uploads/2020/12/fonctionnalites-3.png"
+              />
+            </p>
+            <p style="margin-left:auto">Allez ensuite jusqu’au menu d’installation et cliquez sur installer.</p>
+            <p>
+              <img src="https://goopensource.fr/wp-content/uploads/2020/12/install-1.png"
+              />
+            </p>
+            <p style="margin-left:auto">Patientez jusqu’à la fin de l’installation. Une fois terminé fermez la
+              fenêtre. Ouvrez ensuite le rôle DNS dans le gestionnaire de serveurs. Pour
+              cela cliquez sur DNS, puis cliquez droit sur la ligne contenant l’adresse
+              IP du serveur. Choisissez enfin gestionnaire DNS :</p>
+            <p>
+              <img src="https://goopensource.fr/wp-content/uploads/2020/12/gestionnaire-DNS.png"
+              />
+            </p>
+            <p style="margin-left:auto">Nous allons mettre en place la recherche inversée sur notre serveur afin
+              d’être également capables de retrouver le nom de domaine à partie de l’IP.</p>
+            <p
+            style="margin-left:auto">Dans le gestionnaire DNS, cliquez droit sur zone de recherche inversée
+              puis nouvelle zone.</p>
+              <p>
+                <img src="https://goopensource.fr/wp-content/uploads/2020/12/zone-inversee.png"
+                />
+              </p>
+              <p style="margin-left:auto">Passez la page de Bienvenue en cliquant sur suivant.</p>
+              <p>
+                <img src="https://goopensource.fr/wp-content/uploads/2020/12/accueil.png"
+                />
+              </p>
+              <p style="margin-left:auto">Comme précédemment définissez la zone en zone principale.</p>
+              <p>
+                <img src="https://goopensource.fr/wp-content/uploads/2020/12/principale.png"
+                />
+              </p>
+              <p style="margin-left:auto">Choisissez la version d’IP qui correspond à votre infrastructure.</p>
+              <p>
+                <img src="https://goopensource.fr/wp-content/uploads/2020/12/ipv4-1.png"
+                />
+              </p>
+              <p style="margin-left:auto">Indiquez l’ID de votre réseau sur lequel vous voulez faire fonctionner
+                cette recherche inversée :</p>
+              <p>
+                <img src="https://goopensource.fr/wp-content/uploads/2020/12/ID.png" />
+              </p>
+              <p style="margin-left:auto">Le serveur va également créer un fichier pour cette zone donnée. Cliquez
+                simplement sur suivant.</p>
+              <p>
+                <img src="https://goopensource.fr/wp-content/uploads/2020/12/fichier.png"
+                />
+              </p>
+              <p style="margin-left:auto">Vous pouvez autoriser les mises à jour automatiques pour l’ajout de nouveaux
+                serveurs. Pour des raisons de sécurité il est préférable de renseigner
+                les nouveaux hôtes à la main.</p>
+              <p>
+                <img src="https://goopensource.fr/wp-content/uploads/2020/12/MAJ-1.png"
+                />
+              </p>
+              <p style="margin-left:auto">Terminez maintenant la configuration de la recherche inversée.</p>
+              <p>
+                <img src="https://goopensource.fr/wp-content/uploads/2020/12/terminer-1.png"
+                />
+              </p>
+              <p style="margin-left:auto">Pour tester cette configuration, nous allons créer un hôte réseau dans
+                le gestionnaire DNS. Pour cela cliquez droit dans la liste des enregistrement
+                DNS et cliquez sur nouvel hôte.</p>
+              <p>
+                <img src="https://goopensource.fr/wp-content/uploads/2020/12/ajout-hote.png"
+                />
+              </p>
+              <p style="margin-left:auto">Renseignez ensuite les informations du serveur pour lequel vous voulez
+                une résolution DNS. Ici un serveur de test pour l’adresse IP 192.168.1.106.
+                Créez un pointeur associé pour la résolution inverse en cochant la case
+                comme ci-dessous :</p>
+              <p>
+                <img src="https://goopensource.fr/wp-content/uploads/2020/12/enregistrement-hote.png"
+                />
+              </p>
+              <p style="margin-left:auto">Nous pouvons maintenant, depuis une machine cliente pour laquelle nous
+                aurons renseigné notre DNS dans les paramètres de la carte réseau, tester
+                la résolution via une adresse IP avec la commande</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

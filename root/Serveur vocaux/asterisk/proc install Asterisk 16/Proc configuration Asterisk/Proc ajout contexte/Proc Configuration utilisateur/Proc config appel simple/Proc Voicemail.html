@@ -1,0 +1,177 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>Proc Voicemail</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>Proc Voicemail</h1>
+
+      <div class="ck-content">
+        <div class="content">
+          <div class="ck-content">
+            <ul>
+              <li><span class="text-big"><strong>Pour mettre en place des messageries vocale pour nos utilisateurs, il va nous falloir modifier les fichiers </strong></span>
+
+                <span
+                class="text-big" style="color:hsl(30, 75%, 60%)"><strong>/etc/asterisk/voicemail.conf</strong>
+
+                  </span><span class="text-big"><strong> et </strong></span><span class="text-big"
+                  style="color:hsl(30, 75%, 60%)"><strong>/etc/asterisk/extensions.conf</strong></span>
+
+                  <span
+                  class="text-big"><strong>.</strong>
+
+                    </span>
+              </li>
+              <li><span class="text-big"><strong>on va commencer par /etc/asterisk/voicemail.conf:</strong></span>
+
+                <ul>
+                  <li><span class="text-big"><strong>on duplique d'abord </strong></span>
+
+                    <span
+                    class="text-big" style="color:hsl(30, 75%, 60%)"><strong>voicemail.conf</strong>
+
+                      </span><span class="text-big"><strong> dans </strong></span><span class="text-big"
+                      style="color:hsl(30, 75%, 60%)"><strong>voicemail.conf.original</strong></span>
+
+                      <span
+                      class="text-big"><strong> (</strong>
+
+                        </span><span class="text-big" style="color:hsl(180,75%,60%)"><strong>cp /etc/asterisk/voicemail.conf /etc/asterisk/voicemail.conf.original</strong></span>
+
+                        <span
+                        class="text-big"><strong>)</strong>
+
+                          </span>
+                  </li>
+                  <li><span class="text-big"><strong>on vide voicemail.conf </strong></span>
+
+                    <span
+                    class="text-big" style="color:hsl(180,75%,60%)"><strong>(&gt; /etc/asterisk/voicemail.conf</strong>
+
+                      </span><span class="text-big"><strong>)</strong></span>
+
+                  </li>
+                  <li><span class="text-big"><strong>on va dans le fichier via la commande </strong></span>
+
+                    <span
+                    class="text-big" style="color:hsl(180,75%,60%)"><strong>nano /etc/asterisk/voicemail.conf</strong>
+
+                      </span>
+                  </li>
+                  <li><span class="text-big"><strong>on va rajouter les lignes suivantes:</strong></span>
+
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <figure class="image">
+              <img src="Proc%20Voicemail/image.png" />
+            </figure>
+            <ul>
+              <li><span class="text-big" style="color:hsl(30,75%,60%)"><strong>format:</strong></span>
+
+                <span
+                class="text-big"><strong> le format de fichier utilisé pour les messages vocaux</strong>
+
+                  </span>
+              </li>
+              <li><span class="text-big" style="color:hsl(30,75%,60%)"><strong>serveremail:</strong></span>
+
+                <span
+                class="text-big"><strong> l'adresse email pour le serveur</strong>
+
+                  </span>
+              </li>
+              <li><span class="text-big" style="color:hsl(30,75%,60%)"><strong>maxsilence:</strong></span>
+
+                <span
+                class="text-big"><strong> temps maximal de silence en secondes avant que la messagerie raccroche</strong>
+
+                  </span>
+              </li>
+              <li><span class="text-big" style="color:hsl(30,75%,60%)"><strong>silencethreshold:</strong></span>
+
+                <span
+                class="text-big"><strong> indique la sensibilité de micro pour détecter un silence potentiel, moins le chiffre est gros, plus c'est sensible.</strong>
+
+                  </span>
+              </li>
+              <li><span class="text-big" style="color:hsl(30,75%,60%)"><strong>maxlogins:</strong></span>
+
+                <span
+                class="text-big"><strong> le nombre de tentatives de connexion a la messagerie vocale avant que ça soit annulé.</strong>
+
+                  </span>
+              </li>
+            </ul>
+            <p> </p>
+            <ul>
+              <li><span class="text-big"><strong>Ensuite, on indique le contexte (ici local):</strong></span>
+
+                <ul>
+                  <li><span class="text-big"><strong>on indique ensuite la ligne suivante pour créer une boite vocale:</strong></span>
+
+                    <ul>
+                      <li><span class="text-big" style="color:hsl(180,75%,60%)"><strong>XXX =&gt; ,"NOM DE L'UTILISATEUR"</strong></span>
+
+                        <ul>
+                          <li><span class="text-big" style="color:hsl(30,75%,60%)"><strong>XXX:</strong></span>
+
+                            <span
+                            class="text-big"><strong> le numéro de l'utilisateur a qui appartiendra la boite vocale</strong>
+
+                              </span>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li><span class="text-big"><strong>On sauvegarde et on quitte.</strong></span>
+
+              </li>
+              <li><span class="text-big"><strong>dans sip.conf, s'assurer que le paramètre hasvoicemail est sur yes</strong></span>
+
+              </li>
+            </ul>
+            <figure class="image">
+              <img src="Proc%20Voicemail/1_image.png" />
+            </figure>
+            <ul>
+              <li><span class="text-big"><strong>Enfin, on va modifier la séquence d'appel pour que la personne qui appelle soit redirigé vers une messagerie vocale si personne ne répond en rajoutant la ligne suivante:<img src="Proc%20Voicemail/Asterisk%202.png" /></strong></span>
+
+              </li>
+              <li><span class="text-big"><strong>remplacer 1XX par ce qui a été mit comme numéro dans votre séquence d'appel (ici c'est 1XX)</strong></span>
+
+              </li>
+              <li><span class="text-big"><strong>s'assurer que la priorité (n) est correcte</strong></span>
+
+              </li>
+              <li><span class="text-big"><strong>Rajouter aussi la ligne suivante pour appeler votre boite vocale par le 109 (ça sera notre numéro pour contacter les boites vocales):</strong></span>
+
+              </li>
+            </ul>
+            <figure class="image">
+              <img src="Proc%20Voicemail/2_image.png" />
+            </figure>
+            <ul>
+              <li><span class="text-big"><strong>sauvegardez et reloadez asterisk puis testez en appelant un numéro sans répondre puis en appelant le 109.</strong></span>
+
+              </li>
+            </ul>
+            <p> </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

@@ -1,0 +1,114 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>Proc config appel simple</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>Proc config appel simple</h1>
+
+      <div class="ck-content">
+        <div class="content">
+          <div class="ck-content">
+            <ul>
+              <li><span class="text-big"><strong>Dans un premier temps, il nous faudra deux utilisateurs configurés et chacun présent dans le même contexte</strong></span>
+
+              </li>
+              <li><span class="text-big"><strong>Ensuite nous allons aller dans extensions.conf via la commande suivante:</strong></span>
+
+                <ul>
+                  <li><span class="text-big" style="color:hsl(180,75%,60%)"><strong>nano /etc/asterisk/extensions.conf</strong></span>
+
+                  </li>
+                </ul>
+              </li>
+              <li><span class="text-big"><strong>ensuite nous allons marquer juste en dessous du nom du contexte les lignes suivantes:</strong></span>
+
+                <ul>
+                  <li><span class="text-big" style="color:hsl(180,75%,60%)"><strong>exten =&gt; _1XX,  1, Answer()</strong></span>
+
+                  </li>
+                  <li><span class="text-big" style="color:hsl(180,75%,60%)"><strong>exten =&gt; _1XX, n, Dial(SIP/${EXTEN},10)</strong></span>
+
+                  </li>
+                  <li><span class="text-big" style="color:hsl(180,75%,60%)"><strong>exten =&gt; _1XX, n, Hangup()</strong></span>
+
+                  </li>
+                </ul>
+              </li>
+              <li><span class="text-big"><strong>Vous obtiendrez un résultat similaire a ça après votre saisie:</strong></span>
+
+              </li>
+            </ul>
+            <figure class="image">
+              <img src="Proc%20config%20appel%20simple/image.png" />
+            </figure>
+            <ul>
+              <li><span class="text-big"><strong>Chaque ligne qu'on a rajouté correspond a une étape d'un appel simple:</strong></span>
+
+                <ul>
+                  <li><span class="text-big"><strong>La première ligne correspond a une ouverture de ligne:</strong></span>
+
+                    <ul>
+                      <li><span class="text-big" style="color:hsl(30,75%,60%)"><strong>_1XX:</strong></span> 
+                        <span
+                        class="text-big"><strong>Numéro appelé, on met des X pour éviter d'avoir a mettre ces lignes pour chaque numéro concerné.</strong> </span>
+                      </li>
+                      <li><span class="text-big" style="color:hsl(30,75%,60%)"><strong>1:</strong></span> 
+                        <span
+                        class="text-big"><strong>la priorité</strong> </span>
+                      </li>
+                      <li><span class="text-big" style="color:hsl(30,75%,60%)"><strong>Answer():</strong></span> 
+                        <span
+                        class="text-big"><strong>la commande d'ouverture de ligne.</strong> </span>
+                      </li>
+                    </ul>
+                  </li>
+                  <li><span class="text-big"><strong>La seconde ligne correspond a l'envoi de l'appel au numéro appelé:</strong></span>
+
+                    <ul>
+                      <li><span class="text-big" style="color:hsl(30,75%,60%)"><strong>Dial():</strong></span> 
+                        <span
+                        class="text-big"><strong>la commande d'appel</strong> </span>
+                          <ul>
+                            <li><span class="text-big" style="color:hsl(30,75%,60%)"><strong>SIP/:</strong></span> 
+                              <span
+                              class="text-big"><strong>on cherche dans nos SIP le numéro</strong> </span>
+                            </li>
+                            <li><span class="text-big" style="color:hsl(30,75%,60%)"><strong>${EXTEN}:</strong></span> 
+                              <span
+                              class="text-big"><strong>on reprend le numéro qu'on a appelé</strong> </span>
+                            </li>
+                            <li><span class="text-big" style="color:hsl(30,75%,60%)"><strong>10:</strong></span> 
+                              <span
+                              class="text-big"><strong>la durée de la sonnerie en secondes</strong> </span>
+                            </li>
+                          </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li><span class="text-big"><strong>La dernière ligne est ce qui raccroche si il n'y a aucune réponse.</strong></span>
+
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <p> </p>
+            <ul>
+              <li><span class="text-big"><strong>Et voila !! votre configuration d'appel est prête, sauvegardez, reloadez asterisk et testez en appelant un numéro d'un utilisateur configuré !</strong></span>
+
+              </li>
+            </ul>
+            <p> </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

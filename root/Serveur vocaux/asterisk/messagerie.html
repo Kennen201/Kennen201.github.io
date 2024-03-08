@@ -1,0 +1,76 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>messagerie</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>messagerie</h1>
+
+      <div class="ck-content">
+        <p class="MsoTitle" style="text-align:center;" align="center">Passer un appel simple avec messagerie
+          <o:p></o:p>
+        </p>
+        <ol>
+          <li class="MsoListParagraph" style="mso-list:l0 level1 lfo1;">Editer le fichier extensions&nbsp;
+            <o:p></o:p>
+          </li>
+        </ol>
+        <p class="MsoNormal"><span style="font-family:Consolas;font-size:12.0pt;line-height:107%;mso-bidi-font-family:Consolas;">nano /etc/asterisk/extensions.conf<o:p></o:p></span>
+        </p>
+        <p class="MsoNormal"><span style="mso-fareast-language:FR;mso-no-proof:yes;"><img src="messagerie_image.png" width="756" height="110" v:shapes="Image_x0020_1" uploadprocessed="true"></span>
+          <o:p></o:p>
+        </p>
+        <ol>
+          <li class="MsoListParagraphCxSpFirst" style="mso-list:l0 level1 lfo1;">Configuration du VoiceMail
+            <o:p></o:p>
+          </li>
+          <li class="MsoListParagraphCxSpLast" style="mso-list:l0 level1 lfo1;">On copie le fichier original&nbsp;
+            <o:p></o:p>
+          </li>
+        </ol>
+        <p class="MsoNormal"><span style="font-family:Consolas;font-size:12.0pt;line-height:107%;mso-bidi-font-family:Consolas;">cp /etc/asterisk/voicemail.conf /etc/asterisk/voicemail.conf.original<o:p></o:p></span>
+        </p>
+        <ol>
+          <li class="MsoListParagraph" style="mso-list:l0 level1 lfo1;">On vide le fichier&nbsp;
+            <o:p></o:p>
+          </li>
+        </ol>
+        <p class="MsoNormal"><span style="font-family:Consolas;font-size:12.0pt;line-height:107%;mso-bidi-font-family:Consolas;">&gt; /etc/asterisk/voicemail.conf<o:p></o:p></span>
+        </p>
+        <ol>
+          <li class="MsoListParagraph" style="mso-list:l0 level1 lfo1;">Et on édit le fichier&nbsp;
+            <o:p></o:p>
+          </li>
+        </ol>
+        <p class="MsoNormal"><span style="font-family:Consolas;font-size:12.0pt;line-height:107%;mso-bidi-font-family:Consolas;">nano /etc/asterisk/voicemail.conf<o:p></o:p></span>
+        </p>
+        <p class="MsoNormal"><span style="mso-fareast-language:FR;mso-no-proof:yes;"><img src="1_messagerie_image.png" width="789" height="299" v:shapes="Image_x0020_2" uploadprocessed="true"></span>
+          <o:p></o:p>
+        </p>
+        <ol>
+          <li class="MsoListParagraphCxSpFirst" style="mso-list:l0 level1 lfo1;">Reload les paramètres dans la console Asterisk&nbsp;
+            <o:p></o:p>
+          </li>
+        </ol>
+        <p class="MsoListParagraphCxSpMiddle" style="line-height:normal;margin-bottom:.0001pt;mso-add-space:auto;mso-layout-grid-align:none;text-autospace:none;"><span style="font-family:Consolas;font-size:10.0pt;mso-bidi-font-family:Consolas;">asterisk -rvv&nbsp;</span>
+          <span
+          style="font-family:&quot;Verdana&quot;,sans-serif;font-size:10.0pt;mso-bidi-font-family:Verdana;">; ouvrir la console
+            <o:p></o:p>
+            </span>
+        </p>
+        <p class="MsoListParagraphCxSpLast"><span style="font-family:Consolas;font-size:10.0pt;line-height:107%;mso-bidi-font-family:Consolas;">reload&nbsp;</span>
+          <span
+          style="font-family:&quot;Verdana&quot;,sans-serif;font-size:10.0pt;line-height:107%;mso-bidi-font-family:Verdana;">; recharger pour prendre en compte les changements</span>
+            <o:p></o:p>
+        </p>
+      </div>
+    </div>
+  </body>
+
+</html>

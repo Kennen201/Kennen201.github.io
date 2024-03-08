@@ -1,0 +1,50 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>DHCP linux</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>DHCP linux</h1>
+
+      <div class="ck-content">
+        <p>&nbsp;</p>
+        <p>METTRE l'IP EN FIXEEEEEEEEEEEEE par pITIEZZZZZZZZZZZZZZZZZZZZ</p>
+        <p>apt update / upgrade AVAAAAAAAAAAAAAANT COMME PARTOUTTTTTTTTTTTTTTTTTTTTTTTTTTT</p><pre><code class="language-text-plain">apt install isc-dhcp-server</code></pre>
+        <p>pour installer le serveur DHCP</p><pre class="language-bash" tabindex="0"><code class="language-text-plain language-bash">editor /etc/default/isc-dhcp-server</code></pre>
+        <p>pour configurer les interfaces qu'il écoute</p>
+        <figure class="image image_resized"
+        style="width:61.17%;">
+          <img style="aspect-ratio:908/650;" src="1_DHCP linux_image.png" width="908"
+          height="650">
+        </figure>
+        <p>ici ens33 pour nos interfaces réseau</p>
+        <p>ensuite dans /etc/dhcp/dhcpd.conf</p>
+        <p>changer le domain-name</p>
+        <p>puis le DNS</p>
+        <p>commenter ddns-updaet-style none;</p>
+        <figure class="image">
+          <img style="aspect-ratio:956/401;" src="2_DHCP linux_image.png" width="956"
+          height="401">
+        </figure>
+        <p>&nbsp;</p>
+        <p>à la fin de /etc/dhcp/dhcpd.conf</p>
+        <figure class="image">
+          <img style="aspect-ratio:425/120;" src="DHCP linux_image.png" width="425"
+          height="120">
+        </figure>
+        <p>PUIS LANCER LE SERVICE CA SERAIT BETER DOUBLIER APRES TOUT CA</p>
+        <pre
+        class="language-bash" tabindex="0"><code class="language-text-plain language-bash">service isc-dhcp-server start
+#ou bien systemctl start isc-dhcp-server marche aussi</code>
+          </pre>
+      </div>
+    </div>
+  </body>
+
+</html>

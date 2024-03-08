@@ -1,0 +1,292 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>proc install Asterisk 16</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>proc install Asterisk 16</h1>
+
+      <div class="ck-content">
+        <div class="content">
+          <div class="ck-content">
+            <ul>
+              <li><span class="text-big"><strong>Lancer le support sur lequel on va installer Asterisk 16 (ici, ça sera une VM Debian 10 sans install graphique avec SSH)</strong></span>
+
+              </li>
+              <li><span class="text-big"><strong>installer Filezilla sur sa machine physique</strong></span>
+
+              </li>
+              <li><span class="text-big"><strong>trouver l'ip de notre VM:</strong></span>
+
+                <ul>
+                  <li><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong>ip -c a</strong></span>
+
+                  </li>
+                  <li><span class="text-big"><strong>vous obtiendrez le résultat suivant:</strong></span>
+
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <figure class="image">
+              <img src="proc%20install%20Asterisk%2016/image.png" />
+            </figure>
+            <ul>
+              <li><span class="text-big"><strong>Ici, notre IP est le </strong></span>
+
+                <span
+                class="text-big" style="color:hsl(30, 75%, 60%)"><strong>192.168.240.131</strong>
+
+                  </span>
+              </li>
+            </ul>
+            <p> </p>
+            <ul>
+              <li><span class="text-big"><strong>Ouvrir Filezilla, se connecter a notre VM avec l'ip, le nom de l'utilisateur, son mot de passe et le port 22 (port SSH)</strong></span>
+
+              </li>
+              <li><span class="text-big"><strong>déplacer l'archive d'asterisk 16 dans notre VM par Filezilla (bien faire attention a le déplacer dans un dossier auquel l'utilisateur a accès, le mieux est </strong></span>
+
+                <span
+                class="text-big" style="color:hsl(30, 75%, 60%)"><strong>/home/&lt;NOM D'UTILISATEUR&gt;</strong>
+
+                  </span><span class="text-big"><strong>)</strong></span>
+
+              </li>
+              <li><span class="text-big"><strong>déconnecter et fermer Filezilla</strong></span>
+
+              </li>
+              <li><span class="text-big"><strong>sur notre VM, mettre a jour la liste des paquets:</strong></span>
+
+                <ul>
+                  <li><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong>apt update</strong></span>
+
+                  </li>
+                  <li><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong>apt upgrade</strong></span>
+
+                  </li>
+                </ul>
+              </li>
+              <li><span class="text-big"><strong>se mettre dans le répertoire ou on a placé notre archive (ici je l'ai mis dans /home/user/):</strong></span>
+
+                <ul>
+                  <li><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong>cd /home/user/</strong></span>
+
+                  </li>
+                </ul>
+              </li>
+              <li><span class="text-big"><strong>extraire l'archive de asterisk 16:</strong></span>
+
+                <ul>
+                  <li><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong>tar xzvf asterisk-16-current.tar.gz</strong></span>
+
+                  </li>
+                </ul>
+              </li>
+              <li><span class="text-big"><strong>on va maintenant aller dans le répertoire issue de l'archive extraite:</strong></span>
+
+                <ul>
+                  <li><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong>cd asterisk 16.XX.X</strong></span>
+
+                    <span
+                    class="text-big"><strong> (</strong>
+
+                      </span><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong>XX.X</strong></span>
+
+                      <span
+                      class="text-big"><strong> représenté par notre numéro de version complet)</strong>
+
+                        </span>
+                  </li>
+                </ul>
+              </li>
+              <li><span class="text-big"><strong>marquer </strong></span><span class="text-big"
+                style="color:hsl(180, 75%, 60%)"><strong>contrib/scripts/install_prereq install</strong></span>
+
+                <span
+                class="text-big"><strong> (ce qui va lancer le début de l'installation)</strong>
+
+                  </span>
+              </li>
+              <li><span class="text-big"><strong>Indiquer </strong></span><span class="text-big"
+                style="color:hsl(180, 75%, 60%)"><strong>33</strong></span><span class="text-big"><strong> comme préfixe UIT-T</strong></span>
+
+              </li>
+              <li><span class="text-big"><strong>Vous recevrez ce message quand la commande aura fini:</strong></span>
+
+              </li>
+            </ul>
+            <figure class="image">
+              <img src="proc%20install%20Asterisk%2016/1_image.png" />
+            </figure>
+            <ul>
+              <li><span class="text-big"><strong>on va ensuite mettre a jour les pré-requis pour les formats MP3:</strong></span>
+
+                <ul>
+                  <li><span class="text-big"><strong>d'abord: </strong></span><span class="text-big"
+                    style="color:hsl(180, 75%, 60%)"><strong>contrib/scripts/get_mp3_source.sh</strong></span>
+
+                  </li>
+                  <li><span class="text-big"><strong>ensuite: </strong></span><span class="text-big"
+                    style="color:hsl(180, 75%, 60%)"><strong>./configure --with-jansson-bundled</strong></span>
+
+                  </li>
+                </ul>
+              </li>
+              <li><span class="text-big"><strong>Maintenant que les pré-requis sont a jour, on va régler des paramètres:</strong></span>
+
+                <ul>
+                  <li><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong>make menuselect</strong></span>
+
+                  </li>
+                </ul>
+              </li>
+              <li><span class="text-big"><strong>On va cocher ce qu'on veut activer/ajouter</strong></span>
+
+                <ul>
+                  <li><span class="text-big" style="color:hsl(30, 75%, 60%)"><strong>add-ons</strong></span>
+
+                    <span
+                    class="text-big"><strong> --→ </strong>
+
+                      </span><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong>format_mp3</strong></span>
+
+                  </li>
+                  <li><span class="text-big" style="color:hsl(30, 75%, 60%)"><strong>Core sounds packages</strong></span>
+
+                    <span
+                    class="text-big"><strong> --→ décocher </strong>
+
+                      </span><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong>CORE-SOUNDS-EN-ALAW</strong></span>
+
+                      <span
+                      class="text-big"><strong> et cocher </strong>
+
+                        </span><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong>CORE-SOUNDS-FR-ALAW </strong></span>
+
+                        <span
+                        class="text-big"><strong>/</strong>
+
+                          </span><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong> CORE-SOUNDS-FR-ULAW</strong></span>
+
+                  </li>
+                  <li><span class="text-big" style="color:hsl(30, 75%, 60%)"><strong>Music On Hold File packages</strong></span>
+
+                    <span
+                    class="text-big"><strong> --→ décocher </strong>
+
+                      </span><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong>MOH-OPSOUND-WAV</strong></span>
+
+                      <span
+                      class="text-big"><strong> et cocher </strong>
+
+                        </span><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong>MOH-OPSOUND-ALAW </strong></span>
+
+                        <span
+                        class="text-big"><strong>/</strong>
+
+                          </span><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong> MOH-OPSOUND-ULAW</strong></span>
+
+                  </li>
+                  <li><span class="text-big" style="color:hsl(30, 75%, 60%)"><strong>Extras sounds packages</strong></span>
+
+                    <span
+                    class="text-big"><strong> --→ </strong>
+
+                      </span><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong>EXTRA-SOUNDS-FR-ALAW </strong></span>
+
+                      <span
+                      class="text-big"><strong>/</strong>
+
+                        </span><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong> EXTRA-SOUNDS-FR-ULAW</strong></span>
+
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <figure class="image">
+              <img src="proc%20install%20Asterisk%2016/2_image.png" />
+            </figure>
+            <ul>
+              <li><span class="text-big" style="color:hsl(30, 75%, 60%)"><strong>ESC</strong></span>
+
+                <span
+                class="text-big"><strong> --→ </strong>
+
+                  </span><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong>Save &amp; exit</strong></span>
+
+              </li>
+              <li><span class="text-big"><strong>Et maintenant, on compile Asterisk:</strong></span>
+
+                <ul>
+                  <li><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong>make -j2</strong></span>
+
+                  </li>
+                </ul>
+              </li>
+              <li><span class="text-big"><strong>puis on lance l'install:</strong></span>
+
+                <ul>
+                  <li><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong>make install</strong></span>
+
+                  </li>
+                  <li><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong>make samples</strong></span>
+
+                  </li>
+                  <li><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong>make config</strong></span>
+
+                  </li>
+                  <li><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong>ldconfig</strong></span>
+
+                  </li>
+                  <li><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong>make install-logrotate</strong></span>
+
+                  </li>
+                </ul>
+              </li>
+              <li><span class="text-big"><strong>enfin, je lance Asterisk:</strong></span>
+
+                <ul>
+                  <li><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong>systemctl start asterisk</strong></span>
+
+                  </li>
+                  <li><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong>systemctl status asterisk</strong></span>
+
+                  </li>
+                </ul>
+              </li>
+              <li><span class="text-big"><strong>je lance la console d'asterisk:</strong></span>
+
+                <ul>
+                  <li><span class="text-big" style="color:hsl(180, 75%, 60%)"><strong>asterisk -rvv</strong></span>
+
+                  </li>
+                  <li><span class="text-big"><strong>pour sortir de la console: </strong></span>
+
+                    <span
+                    class="text-big" style="color:hsl(180, 75%, 60%)"><strong>exit</strong>
+
+                      </span>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <p> </p>
+            <ul>
+              <li><span class="text-big"><strong>Et voila ! Asterisk est installé.</strong></span>
+
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

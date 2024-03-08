@@ -1,0 +1,198 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>install oklm</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>install oklm</h1>
+
+      <div class="ck-content">
+        <ol>
+          <li class="MsoListParagraphCxSpFirst" style="mso-list:l0 level1 lfo1;">Se connecter en SSH puis ce mettre en root
+            <o:p></o:p>
+          </li>
+          <li class="MsoListParagraphCxSpLast" style="mso-list:l0 level1 lfo1;">Commandes&nbsp;:&nbsp;
+            <o:p></o:p>
+          </li>
+        </ol>
+        <p class="MsoNormal" style="line-height:normal;margin-bottom:.0001pt;mso-layout-grid-align:none;text-autospace:none;"><span style="font-family:Consolas;font-size:10.0pt;mso-bidi-font-family:Consolas;">apt update<o:p></o:p></span>
+        </p>
+        <p class="MsoNormal"><span style="font-family:Consolas;font-size:10.0pt;line-height:107%;mso-bidi-font-family:Consolas;">apt upgrade<o:p></o:p></span>
+        </p>
+        <ol>
+          <li class="MsoListParagraph" style="mso-list:l0 level1 lfo1;">Se placer dans le dossier
+            <o:p></o:p>
+          </li>
+        </ol>
+        <p class="MsoNormal"><span style="font-family:Consolas;font-size:10.0pt;line-height:107%;mso-bidi-font-family:Consolas;">cd /usr/src/<o:p></o:p></span>
+        </p>
+        <ol>
+          <li class="MsoListParagraph" style="mso-list:l0 level1 lfo1;">Télécharger la version 16 ( il est possible que d’autre version soit disponible
+            ici nous travaillons avec la v16)
+            <o:p></o:p>
+          </li>
+        </ol>
+        <p class="MsoNormal"><span style="font-family:Consolas;font-size:10.0pt;line-height:107%;mso-bidi-font-family:Consolas;">wget&nbsp;</span>
+          <a
+          href="https://downloads.asterisk.org/pub/telephony/asterisk/asterisk-16-current.tar.gz"><span style="font-family:Consolas;font-size:10.0pt;line-height:107%;mso-bidi-font-family:Consolas;">https://downloads.asterisk.org/pub/telephony/asterisk/asterisk-16-current.tar.gz</span>
+            </a><span style="font-family:Consolas;font-size:10.0pt;line-height:107%;mso-bidi-font-family:Consolas;"><o:p></o:p></span>
+        </p>
+        <ol>
+          <li class="MsoListParagraph" style="mso-list:l0 level1 lfo1;">On extrait l’archive
+            <o:p></o:p>
+          </li>
+        </ol>
+        <p class="MsoNormal"><span style="font-family:Consolas;font-size:10.0pt;line-height:107%;mso-bidi-font-family:Consolas;">tar xzvf asterisk-16-current.tar.gz<o:p></o:p></span>
+        </p>
+        <ol>
+          <li class="MsoListParagraph" style="mso-list:l0 level1 lfo1;">On va commencer l’installation, placer vous dans le dossier asterisk
+            <o:p></o:p>
+          </li>
+        </ol>
+        <p class="MsoNormal"><span style="font-family:Consolas;font-size:10.0pt;line-height:107%;mso-bidi-font-family:Consolas;">cd asterisk-16.10.0<o:p></o:p></span>
+        </p>
+        <ol>
+          <li class="MsoListParagraph" style="mso-list:l0 level1 lfo1;">Puis taper la commande&nbsp;
+            <o:p></o:p>
+          </li>
+        </ol>
+        <p class="MsoNormal"><span style="font-family:Consolas;font-size:10.0pt;line-height:107%;mso-bidi-font-family:Consolas;">contrib/scripts/install_prereq install<o:p></o:p></span>
+        </p>
+        <ol>
+          <li class="MsoListParagraph" style="mso-list:l0 level1 lfo1;">Utilisation du préfixe 33
+            <o:p></o:p>
+          </li>
+        </ol>
+        <p class="MsoNormal"><span style="mso-fareast-language:FR;mso-no-proof:yes;"><img src="install oklm_image.png" width="756" height="380" border="0" v:shapes="Image_x0020_1" uploadprocessed="true"></span>
+          <o:p></o:p>
+        </p>
+        <ol>
+          <li class="MsoListParagraph" style="mso-list:l0 level1 lfo1;">Une fois les pré requis installé vous devez recevoir le message suivant&nbsp;:&nbsp;
+            <o:p></o:p>
+          </li>
+        </ol>
+        <p class="MsoNormal"><span style="mso-fareast-language:FR;mso-no-proof:yes;"><img src="1_install oklm_image.png" width="543" height="91" border="0" v:shapes="Image_x0020_2" uploadprocessed="true"></span>
+          <o:p></o:p>
+        </p>
+        <ol>
+          <li class="MsoListParagraph" style="mso-list:l0 level1 lfo1;">On vérifie et on met à jour les pré requis pour les formats mp3&nbsp;
+            <o:p></o:p>
+          </li>
+        </ol>
+        <p class="MsoNormal"><span style="font-family:Consolas;font-size:10.0pt;line-height:107%;mso-bidi-font-family:Consolas;">contrib/scripts/get_mp3_source.sh<o:p></o:p></span>
+        </p>
+        <ol>
+          <li class="MsoListParagraph" style="mso-list:l0 level1 lfo1;">Une fois fait&nbsp;
+            <o:p></o:p>
+          </li>
+        </ol>
+        <p class="MsoNormal"><span style="font-family:Consolas;font-size:10.0pt;line-height:107%;mso-bidi-font-family:Consolas;">./configure --with-jansson-bundled<o:p></o:p></span>
+        </p>
+        <ol>
+          <li class="MsoListParagraph" style="mso-list:l0 level1 lfo1;">On s’attaque au plus gros parti&nbsp;
+            <o:p></o:p>
+          </li>
+        </ol>
+        <p class="MsoNormal"><span style="font-family:Consolas;font-size:10.0pt;line-height:107%;mso-bidi-font-family:Consolas;">make menuselect<o:p></o:p></span>
+        </p>
+        <ol>
+          <li class="MsoListParagraph" style="mso-list:l0 level1 lfo1;">Une fois le menu suivant qui s’affiche bien faire attention&nbsp;
+            <o:p></o:p>
+          </li>
+        </ol>
+        <p class="MsoNormal"><span style="mso-fareast-language:FR;mso-no-proof:yes;"><img src="2_install oklm_image.png" width="755" height="399" border="0" v:shapes="Image_x0020_3" uploadprocessed="true"></span>
+          <o:p></o:p>
+        </p>
+        <p class="MsoNormal" style="line-height:normal;margin-bottom:.0001pt;mso-layout-grid-align:none;text-autospace:none;"><i><span style="font-family:Calibri-Italic;font-size:10.0pt;mso-bidi-font-family:Calibri-Italic;">Il faut choisir dans Add-ons :<o:p></o:p></span></i>
+        </p>
+        <p class="MsoNormal" style="line-height:normal;margin-bottom:.0001pt;mso-layout-grid-align:none;text-autospace:none;"><span style="font-size:10.0pt;mso-ascii-font-family:Calibri;mso-bidi-font-family:Calibri;mso-hansi-font-family:Calibri;">[*] format_mp3<o:p></o:p></span>
+        </p>
+        <p class="MsoNormal" style="line-height:normal;margin-bottom:.0001pt;mso-layout-grid-align:none;text-autospace:none;"><i><span style="font-family:Calibri-Italic;font-size:10.0pt;mso-bidi-font-family:Calibri-Italic;"># pour les packages de sons, décocher tous les autres et ne prendre que les modules en français<o:p></o:p></span></i>
+        </p>
+        <p class="MsoNormal" style="line-height:normal;margin-bottom:.0001pt;mso-layout-grid-align:none;text-autospace:none;"><i><span style="font-family:Calibri-Italic;font-size:10.0pt;mso-bidi-font-family:Calibri-Italic;">Il faut choisir dans « Core Sound Packages » :<o:p></o:p></span></i>
+        </p>
+        <p class="MsoNormal" style="line-height:normal;margin-bottom:.0001pt;mso-layout-grid-align:none;text-autospace:none;"><span style="font-size:10.0pt;mso-ascii-font-family:Calibri;mso-bidi-font-family:Calibri;mso-hansi-font-family:Calibri;">[*] CORE-SOUNDS-FR-ULAW<o:p></o:p></span>
+        </p>
+        <p class="MsoNormal" style="line-height:normal;margin-bottom:.0001pt;mso-layout-grid-align:none;text-autospace:none;"><span style="font-size:10.0pt;mso-ascii-font-family:Calibri;mso-bidi-font-family:Calibri;mso-hansi-font-family:Calibri;">[*] CORE-SOUNDS-FR-ALAW<o:p></o:p></span>
+        </p>
+        <p class="MsoNormal" style="line-height:normal;margin-bottom:.0001pt;mso-layout-grid-align:none;text-autospace:none;"><i><span style="font-family:Calibri-Italic;font-size:10.0pt;mso-bidi-font-family:Calibri-Italic;">Il faut choisir dans « Music On Hold File Packages » :<o:p></o:p></span></i>
+        </p>
+        <p class="MsoNormal" style="line-height:normal;margin-bottom:.0001pt;mso-layout-grid-align:none;text-autospace:none;"><span style="font-size:10.0pt;mso-ascii-font-family:Calibri;mso-bidi-font-family:Calibri;mso-hansi-font-family:Calibri;">[*] MOH-OPSOUND-ULAW<o:p></o:p></span>
+        </p>
+        <p class="MsoNormal" style="line-height:normal;margin-bottom:.0001pt;mso-layout-grid-align:none;text-autospace:none;"><span style="font-size:10.0pt;mso-ascii-font-family:Calibri;mso-bidi-font-family:Calibri;mso-hansi-font-family:Calibri;">[*] MOH-OPSOUND_ALAW<o:p></o:p></span>
+        </p>
+        <p class="MsoNormal" style="line-height:normal;margin-bottom:.0001pt;mso-layout-grid-align:none;text-autospace:none;"><i><span style="font-family:Calibri-Italic;font-size:10.0pt;mso-bidi-font-family:Calibri-Italic;">Il faut choisir dans « Extras Sound Packages » :<o:p></o:p></span></i>
+        </p>
+        <p class="MsoNormal" style="line-height:normal;margin-bottom:.0001pt;mso-layout-grid-align:none;text-autospace:none;"><span style="font-size:10.0pt;mso-ascii-font-family:Calibri;mso-bidi-font-family:Calibri;mso-hansi-font-family:Calibri;">[*} EXTRA-SOUNDS-FR-ULAW<o:p></o:p></span>
+        </p>
+        <p class="MsoNormal" style="line-height:normal;margin-bottom:.0001pt;mso-layout-grid-align:none;text-autospace:none;"><span style="font-size:10.0pt;mso-ascii-font-family:Calibri;mso-bidi-font-family:Calibri;mso-hansi-font-family:Calibri;">[*] EXTRA-SOUNDS-FR_ALAW<o:p></o:p></span>
+        </p>
+        <p class="MsoNormal"><i><span style="font-family:Calibri-Italic;font-size:10.0pt;line-height:107%;mso-bidi-font-family:Calibri-Italic;">faire "esc" puis "Save &amp; Exit" et valider.<o:p></o:p></span></i>
+        </p>
+        <p class="MsoNormal"><span style="mso-fareast-language:FR;mso-no-proof:yes;"><img src="3_install oklm_image.png" width="757" height="382" border="0" v:shapes="Image_x0020_4" uploadprocessed="true"></span>
+          <o:p></o:p>
+        </p>
+        <p>
+          <br>&nbsp;</p>
+        <p class="MsoNormal">&nbsp;</p>
+        <ol>
+          <li class="MsoListParagraph" style="mso-list:l0 level1 lfo1;">Nous reste qu’a compilé
+            <o:p></o:p>
+          </li>
+        </ol>
+        <p class="MsoNormal"><span style="font-family:Consolas;font-size:10.0pt;line-height:107%;mso-bidi-font-family:Consolas;">make -j2<o:p></o:p></span>
+        </p>
+        <p class="MsoNormal"><span style="mso-fareast-language:FR;mso-no-proof:yes;"><img src="4_install oklm_image.png" width="484" height="116" border="0" v:shapes="Image_x0020_5" uploadprocessed="true"></span>
+          <span
+          style="font-family:Consolas;font-size:10.0pt;line-height:107%;mso-bidi-font-family:Consolas;">
+            <o:p></o:p>
+            </span>
+        </p>
+        <ol>
+          <li class="MsoListParagraph" style="mso-list:l0 level1 lfo1;">On lance l’installation&nbsp;
+            <o:p></o:p>
+          </li>
+        </ol>
+        <p class="MsoNormal"><span style="font-family:Consolas;font-size:10.0pt;line-height:107%;mso-bidi-font-family:Consolas;">make install<o:p></o:p></span>
+        </p>
+        <p class="MsoNormal"><span style="font-family:Consolas;font-size:10.0pt;line-height:107%;mso-bidi-font-family:Consolas;mso-fareast-language:FR;mso-no-proof:yes;"><img src="5_install oklm_image.png" width="456" height="523" border="0" v:shapes="Image_x0020_6" uploadprocessed="true"></span>
+          <span
+          style="font-family:Consolas;font-size:10.0pt;line-height:107%;mso-bidi-font-family:Consolas;">
+            <o:p></o:p>
+            </span>
+        </p>
+        <ol>
+          <li class="MsoListParagraph" style="mso-list:l0 level1 lfo1;"><span style="mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin;">Taper les commandes suivantes&nbsp;<o:p></o:p></span>
+          </li>
+        </ol>
+        <p class="MsoNormal"><span style="mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin;mso-fareast-language:FR;mso-no-proof:yes;"><img src="6_install oklm_image.png" width="757" height="306" border="0" v:shapes="Image_x0020_7" uploadprocessed="true"></span>
+          <span
+          style="mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin;">
+            <o:p></o:p>
+            </span>
+        </p>
+        <p class="MsoNormal">&nbsp;</p>
+        <p class="MsoNormal">&nbsp;</p>
+        <ol>
+          <li class="MsoListParagraph" style="mso-list:l0 level1 lfo1;"><span style="mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin;">La commande pour ouvrir la console Asterisk<o:p></o:p></span>
+          </li>
+        </ol>
+        <p class="MsoNormal"><span style="font-family:Consolas;font-size:10.0pt;line-height:107%;mso-bidi-font-family:Consolas;">asterisk –rvv<o:p></o:p></span>
+        </p>
+        <ol>
+          <li class="MsoListParagraph" style="mso-list:l0 level1 lfo1;"><span style="mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin;">Pour quitter la console&nbsp;<o:p></o:p></span>
+          </li>
+        </ol>
+        <p class="MsoNormal"><span style="font-family:Consolas;font-size:10.0pt;line-height:107%;mso-bidi-font-family:Consolas;">Exit<o:p></o:p></span>
+        </p>
+      </div>
+    </div>
+  </body>
+
+</html>

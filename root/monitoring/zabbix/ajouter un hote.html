@@ -1,0 +1,154 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>ajouter un hote</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>ajouter un hote</h1>
+
+      <div class="ck-content">
+        <p><u>Zabbix Agent Windows</u>
+        </p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <ol>
+          <li>Aller sur le site zabbix.com et télécharger l’agent pour Windows et faire
+            attention à la version utilisée</li>
+          <li>Une fois que le fichier MSI de l'agent Zabbix a été téléchargé sur votre
+            système, exécutez-le et fournissez les informations requises afin de configurer
+            et d'installer l'agent sur l'hôte surveillé cible comme suit :</li>
+        </ol>
+        <p>
+          <img src="4_ajouter un hote_image.png" width="602" height="473">
+        </p>
+        <ol>
+          <li>Après avoir terminé l'installation, ouvrez l'invite de commande Windows
+            avec des privilèges d'administrateur, exécutez la commande services.msc
+            afin d'ouvrir l'utilitaire Services Windows, et localisez le service Zabbix
+            Agent pour vérifier si le service est en cours d'exécution et démarré automatiquement
+            après le redémarrage.</li>
+        </ol>
+        <p>
+          <img src="9_ajouter un hote_image.png" width="728" height="414">
+        </p>
+        <p>&nbsp;</p>
+        <ol>
+          <li>Configurer le pare-feu Windows et tester l'agent Zabbix. Afin d'ouvrir
+            le port de l'agent Zabbix dans le pare-feu de Windows, ouvrez le Panneau
+            de configuration -&gt; Système et sécurité - &gt; Pare-feu Windows et cliquez
+            sur Autoriser une application via le pare-feu Windows.</li>
+        </ol>
+        <p>
+          <img src="8_ajouter un hote_image.png" width="605" height="357">
+        </p>
+        <ol>
+          <li>Ensuite, cliquez sur le bouton Autoriser une autre application et une
+            nouvelle fenêtre devrait s'ouvrir. Utilisez le bouton Parcourir pour naviguer
+            et ajouter le fichier exécutable de l'agent Zabbix (généralement trouvé
+            dans %programfiles%\Zabbix Agent\ si vous l'avez installé à l'aide du programme
+            MSI), puis cliquez sur le bouton Ajouter pour ajouter le service.</li>
+        </ol>
+        <p>
+          <img src="7_ajouter un hote_image.png" width="580" height="436">
+        </p>
+        <p>
+          <img src="5_ajouter un hote_image.png" width="463" height="489">
+        </p>
+        <ol>
+          <li>Ensuite, assurez-vous de vérifier et d'ouvrir la règle du pare-feu sur
+            le segment de réseau où se trouve le serveur Zabbix dans votre réseau et
+            cliquez sur le bouton OK pour terminer et appliquer la configuration.</li>
+        </ol>
+        <p>
+          <img src="6_ajouter un hote_image.png" width="646" height="395">
+        </p>
+        <ol>
+          <li>Une fois que l'agent Windows a été testé à partir de la ligne de commande
+            et que tout semble correct, allez dans l'interface web du serveur Zabbix,
+            allez dans l'onglet Configuration -&gt; Hôtes, et cliquez sur le bouton
+            Créer un hôte afin d'ajouter l'hôte surveillé par Windows.</li>
+        </ol>
+        <p>
+          <img src="3_ajouter un hote_image.png" width="756" height="222">
+        </p>
+        <ol>
+          <li>Dans la fenêtre Host, ajoutez le FQDN de votre agent Windows dans le champ
+            Hostname, ajoutez un nom arbitraire dans le champ Visible name afin d'identifier
+            facilement la machine surveillée sur le panneau Zabbix, assurez-vous que
+            l'hôte est inclus dans un Group Servers, et ajoutez l'adresse IP de votre
+            hôte Windows dans le champ Agent interfaces. La valeur Port reste inchangée.</li>
+        </ol>
+        <p>
+          <img src="ajouter un hote_image.png" width="756" height="347">
+        </p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <ol>
+          <li>Ensuite, allez dans l'onglet Modèles et cliquez sur le bouton Select.
+            Une nouvelle fenêtre contenant des modèles Zabbix devrait apparaître. Naviguez
+            dans cette fenêtre, cochez Template OS Windows, et cliquez sur le bouton
+            Select pour ajouter le modèle.</li>
+        </ol>
+        <p>
+          <img src="1_ajouter un hote_image.png" width="517" height="348">
+        </p>
+        <ol>
+          <li>Une fois que votre machine Windows surveillée a été ajoutée, retournez
+            à Configuration -&gt; Hosts et l'hôte Windows devrait maintenant être présent
+            dans cette fenêtre comme illustré ci-dessous.</li>
+        </ol>
+        <figure class="image image-style-block-align-left">
+          <img style="aspect-ratio:755/86;" src="2_ajouter un hote_image.png" width="755"
+          height="86">
+        </figure>
+        <p><u>Zabbix Agent Windows</u>
+        </p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <ol>
+          <li>Aller sur le site zabbix.com et télécharger l’agent pour Windows et faire
+            attention à la version utilisée</li>
+        </ol>
+        <p>wget https://repo.zabbix.com/zabbix/5.4/debian/pool/main/z/zabbix/zabbix-agent2_5.4.6-1+debian10_amd64.deb</p>
+        <p>dpkg -i zabbix-agent2_5.4.6-1+debian10_amd64.deb</p>
+        <p>apt update &amp;&amp; apt upgrade</p>
+        <p>apt install zabbix-agent</p>
+        <p>&nbsp;</p>
+        <ol>
+          <li>Configurer et tester l'agent Zabbix sous Linux</li>
+        </ol>
+        <p style="margin-left:42.55pt;"># nano /etc/zabbix/zabbix_agentd.conf</p>
+        <p>
+          <img src="10_ajouter un hote_image.png" width="756" height="127">
+        </p>
+        <p>
+          <img src="11_ajouter un hote_image.png" width="756" height="171">
+        </p>
+        <p>
+          <img src="12_ajouter un hote_image.png" width="756" height="170">
+        </p>
+        <ol>
+          <li>Pour les anciennes distributions, utilisez la commande service pour gérer
+            le démon agent Zabbix :</li>
+        </ol>
+        <p>Systemctl status zabbix-agent</p>
+        <p>&nbsp;</p>
+        <ol>
+          <li>Autoriser le firewall</li>
+        </ol>
+        <p>ufw allow 10050/tcp</p>
+        <ol>
+          <li>Ajouter l’agent à monitoré dans zabbix comme nous l’avons fait sur Windows.
+            Mais modifier ce qu’il y a à modifier.</li>
+        </ol>
+      </div>
+    </div>
+  </body>
+
+</html>

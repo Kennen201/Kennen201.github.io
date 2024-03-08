@@ -1,0 +1,126 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>cisco/switching/routing</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>cisco/switching/routing</h1>
+
+      <div class="ck-content">
+        <p>niveau 1= transférer sur les supports les bits informatique (PDU de niveau
+          1) =&gt; responsable du transport des représentations de bit sur les supporst</p>
+        <p>au niveau 1 on considère les SUPPORTS =&gt; filaire (cuivre/fibre =&gt;
+          monomode=&gt;plus loin plus fine, plus cher, =&gt; multimode =&gt; plus
+          épaisse, source lumineuse en led à la place d'un laser pour le monomode.</p>
+        <p>gros problème de la fibre =&gt; connectique (compliqué à faire)</p>
+        <p>&nbsp;</p>
+        <p>paire torsadé =&gt; elles sont torsadés pour éviter les interférences
+          (diaphonie)&nbsp;</p>
+        <p>au niveau les topologies = bus, ring(anneau), étoile.</p>
+        <p>format d'une trame =&nbsp;</p>
+        <p>format d'adresse mac =&gt; unicast / broadcast / multicast (unicast =&gt;
+          une adresse) (broadcast = tlm) (multicast = un groupe particulier sur lequel
+          je suis)</p>
+        <p>&nbsp;</p>
+        <p>CASCADING/Cascade</p>
+        <p>STT&nbsp;</p>
+        <p>Spanning tree</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p><span class="text-big" style="background-color:hsl(0,0%,100%);color:hsl(0,75%,60%);"><code>VLAN</code></span>
+        </p>
+        <p>le but de la VLAN est de séparer à la couche 2, en passant par des switchs</p>
+        <p>on ne peut pas passer d'une vlan à une autre&nbsp;</p>
+        <p>un port qui fait du trunk(aggrégat de vlan) (cisco), il étiquette la trame
+          sortante dont elle vienne avec le numéro de la vlan = tag</p>
+        <p>même chose lorsqu'il reçoit des trames, il vérifié la vlan est retransmet
+          dans la VLAN en elevant l'étiquette</p>
+        <p>une zone de mémoire est dans le switch pour chaque VLAN, ce qui fait qu'elle
+          ne se croise jamais</p>
+        <p>pour les switch :</p><pre><code class="language-text-plain">enable
+conf t
+interface range fa0/1-24,g0/1-2
+switchport mode access
+switchport nonegiotate
+interface g0/1
+switchport mode trunk</code></pre>
+        <p>autre exemple pour configurer en même temps les VLAN sur un switch de
+          niveau 3</p><pre><code class="language-text-plain">Switch&gt;en
+Switch#conf t
+Enter configuration commands, one per line. End with CNTL/Z.
+Switch(config)#interface
+Switch(config)#interface range g1/0/1-7
+Switch(config-if-range)#switchport mode acc
+Switch(config-if-range)#switchport mode access
+Switch(config-if-range)#switchport nonegotiate
+Switch(config-if-range)#switchport acc
+Switch(config-if-range)#switchport access vlan 10
+% Access VLAN does not exist. Creating vlan 10
+Switch(config-if-range)#interface range g1/0/18-24
+Switch(config-if-range)#switchport mode access
+Switch(config-if-range)#switchport nonegotiate
+Switch(config-if-range)#switchport access vlan 20
+% Access VLAN does not exist. Creating vlan 20</code></pre>
+        <p>&nbsp;</p>
+        <p>sur un switch de niveau 3 il faut penser à activer le routing via le CLI&nbsp;</p><pre><code class="language-text-plain">conf t
+ip routing</code></pre>
+        <p>pour les routeurs : &nbsp;création de sous interface virtuelle (ici exemple
+          avec une VLAN nommé 10 et une VLAN nomme 20)</p>
+        <p style="margin-left:0px;">&nbsp;</p><pre><code class="language-text-plain">Router&gt;en
+Router#conf t
+Router(config)#interface g0/0
+Router(config-if)#no shut</code></pre>
+        <p style="margin-left:0px;">%LINK-5-CHANGED: Interface GigabitEthernet0/0, changed state to up</p>
+        <p
+        style="margin-left:0px;">&nbsp;</p>
+          <p style="margin-left:0px;">%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0, changed
+            state to up</p>
+          <p style="margin-left:0px;">l</p><pre><code class="language-text-plain">Router(config-if)#interface g0/0.10
+Router(config-subif)#</code></pre>
+          <p style="margin-left:0px;">%LINK-5-CHANGED: Interface GigabitEthernet0/0.10, changed state to up</p>
+          <p
+          style="margin-left:0px;">&nbsp;</p>
+            <p style="margin-left:0px;">%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0.10,
+              changed state to up</p><pre><code class="language-text-plain">Router(config-subif)#encapsulation dot1Q 10
+Router(config-subif)#ip address 172.31.10.254 255.255.255.0
+Router(config-subif)#exit
+Router(config)#interf
+Router(config)#interface g0/0
+Router(config-if)#interface g0/0.20
+Router(config-subif)#</code></pre>
+            <p style="margin-left:0px;">%LINK-5-CHANGED: Interface GigabitEthernet0/0.20, changed state to up</p>
+            <p
+            style="margin-left:0px;">&nbsp;</p>
+              <p style="margin-left:0px;">%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0.20,
+                changed state to up</p>
+              <p style="margin-left:0px;">&nbsp;</p><pre><code class="language-text-plain">Router(config-subif)#encapsulation dot1Q 20
+Router(config-subif)#ip address 172.31.20.254 255.255.255.0
+Router(config-subif)#</code></pre>
+              <p style="margin-left:0px;">&nbsp;</p>
+              <p style="margin-left:0px;">connectez le retour à une interface qui n'est pas sur un VLAN (mdr) et
+                qu'elle soit en trunk(l'interface bouffon)</p>
+              <p style="margin-left:0px;">&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>pour vérifier que le trunk est bien actif :</p><pre><code class="language-text-plain">Switch#show interfaces trunk
+Port Mode Encapsulation Status Native vlan
+Gig1/0/10 on 802.1q trunking 1</code></pre>
+              <p style="margin-left:0px;">&nbsp;</p><pre><code class="language-text-plain">Port Vlans allowed on trunk
+Gig1/0/10 1-1005
+
+Port Vlans allowed and active in management domain
+Gig1/0/10 1,10,20
+
+Port Vlans in spanning tree forwarding state and not pruned
+Gig1/0/10 1,10,20</code></pre>
+      </div>
+    </div>
+  </body>
+
+</html>

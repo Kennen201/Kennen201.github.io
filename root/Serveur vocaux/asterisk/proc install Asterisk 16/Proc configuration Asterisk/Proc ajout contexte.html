@@ -1,0 +1,102 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>Proc ajout contexte</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>Proc ajout contexte</h1>
+
+      <div class="ck-content">
+        <div class="content">
+          <div class="ck-content">
+            <ul>
+              <li><span class="text-big"><strong>Pour rajouter un contexte on va aller dans </strong></span>
+
+                <span
+                class="text-big" style="color:hsl(180,75%,60%)"><strong>/etc/asterisk/extensions.conf</strong>
+
+                  </span>
+                  <ul>
+                    <li><span class="text-big"><strong>Dupliquer le fichier </strong></span>
+
+                      <span
+                      class="text-big" style="color:hsl(180,75%,60%)"><strong>extensions.conf</strong>
+
+                        </span><span class="text-big"><strong> dans </strong></span><span class="text-big"
+                        style="color:hsl(180,75%,60%)"><strong>extensions.conf.original</strong></span>
+
+                    </li>
+                    <li><span class="text-big" style="color:hsl(180,75%,60%)"><strong>&gt; /etc/asterisk/extensions.conf</strong></span>
+
+                    </li>
+                    <li><span class="text-big" style="color:hsl(180,75%,60%)"><strong>nano /etc/asterisk/extensions.conf</strong></span>
+
+                    </li>
+                  </ul>
+              </li>
+              <li><span class="text-big"><strong>Un contexte est constitué de:</strong></span>
+
+                <ul>
+                  <li><span class="text-big" style="color:hsl(30,75%,60%)"><strong>Son nom entre crochets</strong></span>
+
+                  </li>
+                  <li><span class="text-big" style="color:hsl(30,75%,60%)"><strong>les actions contenue dans le contexte (les appels, la messagerie vocale, les conférences, etc…)</strong></span>
+
+                  </li>
+                  <li><span class="text-big" style="color:hsl(30,75%,60%)"><strong>les contextes inclus via la commande include</strong></span>
+
+                  </li>
+                </ul>
+              </li>
+              <li><span class="text-big"><strong>On a donc juste besoin de rajouter le nom du contexte et une action pour qu'il soit créé.</strong></span>
+
+              </li>
+              <li><span class="text-big"><strong>un exemple de contexte créé:</strong></span>
+
+              </li>
+            </ul>
+            <figure class="image">
+              <img src="Proc%20ajout%20contexte/Asterisk.png" />
+            </figure>
+            <ul>
+              <li><span class="text-big" style="color:hsl(30, 75%, 60%)"><strong>[it]:</strong></span>
+
+                <span
+                class="text-big"><strong> le nom du contexte (forcément entre crochets)</strong>
+
+                  </span>
+              </li>
+              <li><span class="text-big" style="color:hsl(30, 75%, 60%)"><strong>include:</strong></span>
+
+                <span
+                class="text-big"><strong> une commande qu'on utilise pour inclure d'autres contextes pour pouvoir communiquer avec eux (ici on fait en sorte que it puisse communiquer avec compta)</strong>
+
+                  </span>
+              </li>
+              <li><span class="text-big" style="color:hsl(30, 75%, 60%)"><strong>le bloc de commandes encadrée en rouge:</strong></span>
+
+                <span
+                class="text-big"><strong> le déroulement de l'appel selon le serveur astérisk. (ouverture de ligne --→ sonnerie jusqu'à ce que l'interlocuteur décroche --→ raccroche auto si non réponse.)</strong>
+
+                  </span>
+              </li>
+            </ul>
+            <p> </p>
+            <ul>
+              <li><span class="text-big"><strong>N'oubliez pas de sauvegarder et de reloader Asterisk.</strong></span>
+
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>
